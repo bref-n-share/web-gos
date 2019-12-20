@@ -13,9 +13,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Publish app to Google App Engine
-      uses: zxyle/publish-gae-action@2.1
-      with:
+      - uses: actions/checkout@v1
+      - name: Use Node.js 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: npm install and build
+        run: |
+          npm install
+          npm run build-prod --if-present
+      - name: Publish app to Google App Engine
+        uses: zxyle/publish-gae-action@2.1
+        with:
           # The service account email which will be used for authentication.
           service_account_email: ${{ secrets.SERVICE_ACCOUNT_EMAIL_GCP }}
           # The service account key which will be used for authentication.
