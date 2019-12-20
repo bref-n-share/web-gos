@@ -1,5 +1,8 @@
 # WebGos
 
+## Project
+This project is the web app targeting the associations administrating the mobile app.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
 
 ## Development server
