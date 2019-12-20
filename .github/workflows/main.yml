@@ -27,10 +27,10 @@ jobs:
           npm install
           npm run build-prod --if-present
       - name: Run deployment
-          if: success()
-          uses: actions/gcloud/cli@master
-          env:
-            CLOUDSDK_CORE_PROJECT: ${{ secrets.GCP_PROJECT_ID }}
-          with:
+        if: success()
+        uses: actions/gcloud/cli@master
+        env:
+          CLOUDSDK_CORE_PROJECT: ${{ secrets.GCP_PROJECT_ID }}
+        with:
             entrypoint: gcloud
             args: app deploy ./app.yaml --quiet
