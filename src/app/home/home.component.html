@@ -1,0 +1,8 @@
+<div class="main-container"
+     fxLayout="row"
+     fxLayout.lt-md="column"
+     fxLayoutAlign="center center">
+  <div *ngFor="let card of cards" fxFlex="33">
+    <app-home-card [cardData]="card"></app-home-card>
+  </div>
+</div>
