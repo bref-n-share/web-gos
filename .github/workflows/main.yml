@@ -14,10 +14,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - name: Setting up GCloud Auth
-        uses: actions/gcloud/auth@master
-        env:
-          GCLOUD_AUTH: ${{ secrets.GCLOUD_AUTH }}
+      - name: Google Cloud Platform (GCP) CLI - gcloud
+        uses: actions-hub/gcloud@272.0.0
+        with:
+          # Project id
+          PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+          # GCP authorization credentials
+          APPLICATION_CREDENTIALS: ${{ secrets.GCLOUD_AUTH }}
       - name: Use Node.js 12
         uses: actions/setup-node@v1
         with:
