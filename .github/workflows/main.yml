@@ -14,13 +14,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - name: Google Cloud Platform (GCP) CLI - gcloud
-        uses: actions-hub/gcloud@272.0.0
+      - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
         with:
-          # Project id
-          PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
-          # GCP authorization credentials
-          APPLICATION_CREDENTIALS: ${{ secrets.GCLOUD_AUTH }}
+            version: '270.0.0'
+            service_account_email: ${{ secrets.SERVICE_ACCOUNT_EMAIL_GCP }}
+            service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY_GCP }}
       - name: Use Node.js 12
         uses: actions/setup-node@v1
         with:
