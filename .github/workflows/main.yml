@@ -22,14 +22,12 @@ jobs:
         run: |
           npm install
           npm run build-prod --if-present
-      - name: GCP Authenticate
-        if: success()
-        uses: actions/gcloud/auth@master
-        env:
-          GCLOUD_AUTH: ${{ secrets.GCLOUD_AUTH }}
-      - name: Run deployment
-        if: success()
-        uses: actions/gcloud/cli@master
+      - name: Setup gcloud command
+        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
         with:
-          entrypoint: gcloud
-          args: app deploy ./app.yaml --quiet
+            version: '270.0.0'
+            service_account_email: ${{ secrets.SERVICE_ACCOUNT_EMAIL_GCP }}
+            service_account_key: ${{ secrets.GCLOUD_AUTH }}
+      - name: Deploy on App Engine
+        if: success()
+        run: gcloud app deploy ./app.yaml --quiet
