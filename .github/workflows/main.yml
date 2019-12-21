@@ -18,7 +18,7 @@ jobs:
         with:
             version: '270.0.0'
             service_account_email: ${{ secrets.SERVICE_ACCOUNT_EMAIL_GCP }}
-            service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY_GCP }}
+            service_account_key: ${{ secrets.GCLOUD_AUTH }}
       - name: Use Node.js 12
         uses: actions/setup-node@v1
         with:
