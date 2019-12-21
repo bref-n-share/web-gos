@@ -30,4 +30,4 @@ jobs:
             service_account_key: ${{ secrets.GCLOUD_AUTH }}
       - name: Deploy on App Engine
         if: success()
-        run: gcloud app deploy ./app.yaml --quiet
+        run: gcloud app deploy ./app.yaml --project ${{ secrets.GCP_PROJECT_ID }} --quiet
