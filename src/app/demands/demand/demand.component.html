@@ -1,0 +1,29 @@
+<mat-card fxLayout="column">
+  <div fxFlex="50" fxLayout="row">
+    <div fxLayoutAlign="center center" fxFlex="33">
+      <img src="{{demand.img}}" alt="img" />
+    </div>
+    <div fxLayout="column" fxLayoutAlign="start center" fxFlex="66">
+      <h3>{{demand.author}}</h3>
+      <p>
+        {{demand.description}}
+      </p>
+    </div>
+  </div>
+  <div fxFlex="50">
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Commentaires ({{demand.comments.length}})
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div *ngFor="let comment of demand.comments">
+          <app-comment [comment]="comment"></app-comment>
+          <mat-divider></mat-divider>
+        </div>
+
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</mat-card>

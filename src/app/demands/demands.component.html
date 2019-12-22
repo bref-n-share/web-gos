@@ -1,0 +1,11 @@
+<div id="main">
+  <app-filters-small></app-filters-small>
+  <div class="main-container" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center center">
+    <div fxFlex="33" fxFlex.lt-md="0" class="filter-big-container">
+      <app-filter-big></app-filter-big>
+    </div>
+    <div fxFlex="66" fxFlex.lt-md="100">
+      <app-demand *ngFor="let demand of demands" [demand]="demand"></app-demand>
+    </div>
+  </div>
+</div>

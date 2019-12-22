@@ -1,0 +1,19 @@
+@media screen and (min-width: 960px) {
+  app-filters-small {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 959px) {
+  app-filter-big {
+    display: none;
+  }
+}
+
+app-demand {
+  padding: 5%;
+}
+
+#main {
+  background-color: #fafafa;
+}
