@@ -1,0 +1,4 @@
+<section class="example-section" *ngFor="let key of getKeys()">
+  <mat-checkbox (change)="modelChanged()" class="example-margin" [(ngModel)]="modelsFilter[key]">{{key}}</mat-checkbox>
+</section>
+

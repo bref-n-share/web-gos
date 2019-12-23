@@ -1,0 +1,25 @@
+@media screen and (min-width: 960px) {
+  app-filters-small {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 959px) {
+  .filter-big-container {
+    display: none;
+  }
+}
+
+app-demand {
+  padding: 5%;
+}
+
+#main {
+  height: 100%;
+  background-color: #fafafa;
+  overflow-y: auto;
+}
+
+.filter-card {
+  width: 75%;
+}
