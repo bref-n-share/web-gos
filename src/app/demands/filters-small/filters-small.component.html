@@ -6,12 +6,6 @@
       </mat-panel-title>
     </mat-expansion-panel-header>
 
-    <mat-form-field>
-      <input matInput placeholder="First name">
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput placeholder="Age">
-    </mat-form-field>
+    <app-filter-big [modelsFilter]="modelFilter"></app-filter-big>
   </mat-expansion-panel>
 </mat-accordion>

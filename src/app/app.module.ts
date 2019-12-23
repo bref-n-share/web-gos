@@ -11,8 +11,9 @@ import { HomeCardComponent } from './home/home-card/home-card.component';
 import { DemandsComponent } from './demands/demands.component';
 import { FiltersSmallComponent } from './demands/filters-small/filters-small.component';
 import { DemandComponent } from './demands/demand/demand.component';
-import { FilterBigComponent } from './demands/filter-big/filter-big.component';
+import { FiltersComponent } from './demands/filters/filters.component';
 import { CommentComponent } from './demands/demand/comment/comment.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { CommentComponent } from './demands/demand/comment/comment.component';
     DemandsComponent,
     FiltersSmallComponent,
     DemandComponent,
-    FilterBigComponent,
+    FiltersComponent,
     CommentComponent,
   ],
   imports: [
@@ -31,7 +32,8 @@ import { CommentComponent } from './demands/demand/comment/comment.component';
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -7,7 +7,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatDividerModule} from '@angular/material/divider';
-
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 const modules = [
   MatButtonModule,
@@ -17,7 +17,8 @@ const modules = [
   MatExpansionModule,
   MatFormFieldModule,
   MatInputModule,
-  MatDividerModule
+  MatDividerModule,
+  MatCheckboxModule
 ];
 
 

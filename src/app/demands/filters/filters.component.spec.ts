@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FilterBigComponent } from './filter-big.component';
+import { FiltersComponent } from './filters.component';
 
-describe('FilterBigComponent', () => {
-  let component: FilterBigComponent;
-  let fixture: ComponentFixture<FilterBigComponent>;
+describe('FiltersComponent', () => {
+  let component: FiltersComponent;
+  let fixture: ComponentFixture<FiltersComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FilterBigComponent ]
+      declarations: [ FiltersComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FilterBigComponent);
+    fixture = TestBed.createComponent(FiltersComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
