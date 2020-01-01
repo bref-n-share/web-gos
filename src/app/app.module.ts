@@ -14,6 +14,9 @@ import { DemandComponent } from './demands/demand/demand.component';
 import { FiltersComponent } from './demands/filters/filters.component';
 import { CommentComponent } from './demands/demand/comment/comment.component';
 import { FormsModule } from '@angular/forms';
+import { OrgaComponent } from './orga/orga.component';
+import {AgmCoreModule, GoogleMapsAPIWrapper} from '@agm/core';
+import { OrgaDetailsComponent } from './orga/orga-details/orga-details.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,8 @@ import { FormsModule } from '@angular/forms';
     DemandComponent,
     FiltersComponent,
     CommentComponent,
+    OrgaComponent,
+    OrgaDetailsComponent,
   ],
   imports: [
     FlexLayoutModule,
@@ -33,9 +38,15 @@ import { FormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     MaterialModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyB_Y-8V5yWENTbHFAIkIKRs3Kjn11bUimw'
+    })
   ],
-  providers: [],
+  providers: [GoogleMapsAPIWrapper],
+  entryComponents: [
+    OrgaDetailsComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>{{data.name}}</h1>
+<div mat-dialog-content class="orga-details-container" fxLayout="column" fxLayoutAlign="center center">
+  <mat-form-field>
+    <mat-label>Adresse</mat-label>
+    <input matInput [(ngModel)]="data.address">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Numéro de téléphone</mat-label>
+    <input matInput type="number" [(ngModel)]="data.tel">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Annuler</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Sauvegarder</button>
+</div>

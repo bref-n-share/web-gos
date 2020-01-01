@@ -21,5 +21,7 @@ app-demand {
 }
 
 .filter-card {
+
+  position: relative;
   width: 75%;
 }
