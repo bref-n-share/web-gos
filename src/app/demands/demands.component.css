@@ -6,7 +6,7 @@
 
 @media screen and (max-width: 959px) {
   .filter-big-container {
-    display: none;
+    display: none !important;
   }
 }
 
@@ -15,13 +15,14 @@ app-demand {
 }
 
 #main {
-  height: 100%;
+  height: calc(100vh - 64px);
   background-color: #fafafa;
   overflow-y: auto;
 }
 
 .filter-card {
-
-  position: relative;
-  width: 75%;
+  position: fixed;
+  left: 0;
+  top: 20%;
+  width: 30%;
 }
