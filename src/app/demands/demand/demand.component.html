@@ -15,11 +15,12 @@
       <mat-progress-bar mode="determinate" value="{{(demand.qtyFetched / demand.qtyAsked) * 100}}"></mat-progress-bar>
     </div>
     <div fxFlex="20" fxLayoutAlign="center center">
-      <h4>{{demand.qtyFetched}} sur {{demand.qtyAsked}}</h4>
+      <h4 *ngIf="demand.qtyFetched !== demand.qtyAsked" class="center-align">{{demand.qtyFetched}} sur {{demand.qtyAsked}}</h4>
+      <h4 *ngIf="demand.qtyFetched === demand.qtyAsked" class="center-align">Demande complétée, merci !</h4>
     </div>
   </div>
-  <div fxFlex="50">
-    <mat-accordion>
+  <div fxFlex="50" fxLayout="row">
+    <mat-accordion fxFlex="75">
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
@@ -33,5 +34,10 @@
 
       </mat-expansion-panel>
     </mat-accordion>
+    <div fxFlex="25" fxLayoutAlign="center center">
+      <button mat-raised-button color="primary"
+              (click)="demand.qtyFetched = demand.qtyFetched + 1"
+              [disabled]="demand.qtyFetched === demand.qtyAsked">Donner</button>
+    </div>
   </div>
 </mat-card>

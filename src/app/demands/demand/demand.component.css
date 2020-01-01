@@ -1,3 +1,7 @@
 img {
   width: 64px;
 }
+
+.mat-card .mat-divider-horizontal {
+  position: relative;
+}
