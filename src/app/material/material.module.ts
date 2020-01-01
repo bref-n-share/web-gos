@@ -8,6 +8,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatDialogModule} from '@angular/material';
 
 const modules = [
   MatButtonModule,
@@ -18,7 +20,9 @@ const modules = [
   MatFormFieldModule,
   MatInputModule,
   MatDividerModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatProgressBarModule,
+  MatDialogModule
 ];
 
 
