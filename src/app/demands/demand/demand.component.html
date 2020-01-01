@@ -1,5 +1,5 @@
 <mat-card fxLayout="column">
-  <div fxFlex="50" fxLayout="row">
+  <div fxFlex="40" fxLayout="row">
     <div fxLayoutAlign="center center" fxFlex="33">
       <img src="{{demand.img}}" alt="img" />
     </div>
@@ -8,6 +8,14 @@
       <p>
         {{demand.description}}
       </p>
+    </div>
+  </div>
+  <div fxFlex="10" fxLayout="row">
+    <div fxFlex="80" fxLayoutAlign="center center">
+      <mat-progress-bar mode="determinate" value="{{(demand.qtyFetched / demand.qtyAsked) * 100}}"></mat-progress-bar>
+    </div>
+    <div fxFlex="20" fxLayoutAlign="center center">
+      <h4>{{demand.qtyFetched}} sur {{demand.qtyAsked}}</h4>
     </div>
   </div>
   <div fxFlex="50">
