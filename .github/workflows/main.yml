@@ -18,16 +18,18 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12
+      - name: Setup gcloud command
+        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+        with:
+          version: '270.0.0'
+          service_account_email: ${{ secrets.SERVICE_ACCOUNT_EMAIL_GCP }}
+          service_account_key: ${{ secrets.GCLOUD_AUTH }}
+      - name: Download secrets json file
+        run: gsutil cp gs://bref-n-share-secrets-json/secrets.json ./src/environments
       - name: npm install and build
         run: |
           npm install
           npm run build-prod --if-present
-      - name: Setup gcloud command
-        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
-        with:
-            version: '270.0.0'
-            service_account_email: ${{ secrets.SERVICE_ACCOUNT_EMAIL_GCP }}
-            service_account_key: ${{ secrets.GCLOUD_AUTH }}
       - name: Deploy on App Engine
         if: success()
         run: gcloud app deploy ./app.yaml --project ${{ secrets.GCP_PROJECT_ID }} --quiet
