@@ -3,10 +3,10 @@ import {Demand} from '../../models/Demand';
 
 @Component({
   selector: 'app-demand',
-  templateUrl: './demand.component.html',
-  styleUrls: ['./demand.component.css']
+  templateUrl: './message.component.html',
+  styleUrls: ['./message.component.css']
 })
-export class DemandComponent implements OnInit {
+export class MessageComponent implements OnInit {
 
   constructor() { }
   @Input() demand: Demand;

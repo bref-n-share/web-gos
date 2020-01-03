@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   cards: CardData[] = [
     {url: '/demands', img: 'assets/img/demands.jpeg', text: 'Demandes'},
     {url: '/notify', img: 'assets/img/notification.jpeg', text: 'Notifier'},
-    {url: '/messaging', img: 'assets/img/gos-messaging.jpg', text: 'GOS Messaging'},
+    {url: '/gos', img: 'assets/img/gos-messaging.jpg', text: 'GOS Messaging'},
     {url: '/organization', img: 'assets/img/organization.jpeg', text: 'Gérer l\'organisation'},
     {url: '/account', img: 'assets/img/account.jpeg', text: 'Gérer mon compte'},
     {url: '/members', img: 'assets/img/members.jpeg', text: 'Gérer les membres'}

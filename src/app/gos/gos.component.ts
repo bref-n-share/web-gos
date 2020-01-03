@@ -6,10 +6,10 @@ import {DemandsService} from '../services/demands.service';
 
 @Component({
   selector: 'app-demands',
-  templateUrl: './demands.component.html',
-  styleUrls: ['./demands.component.css']
+  templateUrl: './gos.component.html',
+  styleUrls: ['./gos.component.css']
 })
-export class DemandsComponent implements OnInit {
+export class GosComponent implements OnInit {
 
   demands: Demand[];
   filterModel = {};
