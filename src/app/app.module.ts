@@ -21,6 +21,8 @@ import { OrgaDetailsComponent } from './orga/orga-details/orga-details.component
 import { NotifyComponent } from './notify/notify.component';
 import { FacebookComponent } from './notify/facebook/facebook.component';
 import {HttpClientModule} from '@angular/common/http';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,8 @@ import {HttpClientModule} from '@angular/common/http';
     AgmCoreModule.forRoot({
       apiKey: secrets.mapsApiKey
     }),
-    HttpClientModule
+    HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [GoogleMapsAPIWrapper],
   entryComponents: [
