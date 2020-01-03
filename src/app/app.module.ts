@@ -1,3 +1,4 @@
+import secrets from '../environments/secrets.json';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -8,15 +9,20 @@ import { NavbarComponent } from './navbar/navbar.component';
 import {AppRoutingModule} from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { HomeCardComponent } from './home/home-card/home-card.component';
-import { DemandsComponent } from './demands/demands.component';
-import { FiltersSmallComponent } from './demands/filters-small/filters-small.component';
-import { DemandComponent } from './demands/demand/demand.component';
-import { FiltersComponent } from './demands/filters/filters.component';
-import { CommentComponent } from './demands/demand/comment/comment.component';
+import { GosComponent } from './gos/gos.component';
+import { FiltersSmallComponent } from './gos/filters-small/filters-small.component';
+import { MessageComponent } from './gos/message/message.component';
+import { FiltersComponent } from './gos/filters/filters.component';
+import { CommentComponent } from './gos/message/comment/comment.component';
 import { FormsModule } from '@angular/forms';
 import { OrgaComponent } from './orga/orga.component';
 import {AgmCoreModule, GoogleMapsAPIWrapper} from '@agm/core';
 import { OrgaDetailsComponent } from './orga/orga-details/orga-details.component';
+import { NotifyComponent } from './notify/notify.component';
+import { FacebookComponent } from './notify/facebook/facebook.component';
+import {HttpClientModule} from '@angular/common/http';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -24,13 +30,15 @@ import { OrgaDetailsComponent } from './orga/orga-details/orga-details.component
     NavbarComponent,
     HomeComponent,
     HomeCardComponent,
-    DemandsComponent,
+    GosComponent,
     FiltersSmallComponent,
-    DemandComponent,
+    MessageComponent,
     FiltersComponent,
     CommentComponent,
     OrgaComponent,
     OrgaDetailsComponent,
+    NotifyComponent,
+    FacebookComponent,
   ],
   imports: [
     FlexLayoutModule,
@@ -40,8 +48,10 @@ import { OrgaDetailsComponent } from './orga/orga-details/orga-details.component
     AppRoutingModule,
     FormsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyB_Y-8V5yWENTbHFAIkIKRs3Kjn11bUimw'
-    })
+      apiKey: secrets.mapsApiKey
+    }),
+    HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [GoogleMapsAPIWrapper],
   entryComponents: [

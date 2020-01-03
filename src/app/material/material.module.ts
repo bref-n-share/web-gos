@@ -10,6 +10,9 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatDialogModule} from '@angular/material';
+import {MatProgressSpinnerModule} from '@angular/material';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 
 const modules = [
   MatButtonModule,
@@ -22,7 +25,9 @@ const modules = [
   MatDividerModule,
   MatCheckboxModule,
   MatProgressBarModule,
-  MatDialogModule
+  MatDialogModule,
+  MatProgressSpinnerModule,
+  MatSnackBarModule
 ];
 
 
