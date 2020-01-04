@@ -48,7 +48,7 @@ import { environment } from '../environments/environment';
     AppRoutingModule,
     FormsModule,
     AgmCoreModule.forRoot({
-      apiKey: secrets.mapsApiKey
+      apiKey: environment.mapsApiKey
     }),
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
