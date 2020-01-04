@@ -41,6 +41,7 @@ yarn-error.log
 testem.log
 /typings
 /src/environments/secrets.json
+/src/environments/environment.ts
 
 # System Files
 .DS_Store

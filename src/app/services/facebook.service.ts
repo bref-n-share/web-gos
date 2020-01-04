@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import secrets from '../../environments/secrets.json';
+import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
@@ -13,7 +13,7 @@ export class FacebookService {
   ) { }
 
   baseUrl = 'https://graph.facebook.com/v5.0';
-  accessToken = secrets.facebookApiKey;
+  accessToken = environment.facebookApiKey;
 
 
   createPost(message): Observable<any> {

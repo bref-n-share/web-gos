@@ -25,7 +25,7 @@ jobs:
           service_account_email: ${{ secrets.SERVICE_ACCOUNT_EMAIL_GCP }}
           service_account_key: ${{ secrets.GCLOUD_AUTH }}
       - name: Download secrets json file
-        run: gsutil cp gs://bref-n-share-secrets-json/secrets.json ./src/environments
+        run: gsutil cp gs://bref-n-share-secrets-json/environment.prod.ts ./src/environments
       - name: npm install and build
         run: |
           npm install
