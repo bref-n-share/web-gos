@@ -1,8 +1,8 @@
 {
   "name": "Bref N Share",
   "short_name": "Bref N Share",
-  "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "theme_color": "#3f51b5",
+  "background_color": "#FFFFFF",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
