@@ -22,6 +22,7 @@ import { FacebookComponent } from './notify/facebook/facebook.component';
 import {HttpClientModule} from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { HomeFooterComponent } from './home/home-footer/home-footer.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { environment } from '../environments/environment';
     OrgaDetailsComponent,
     NotifyComponent,
     FacebookComponent,
+    HomeFooterComponent,
   ],
   imports: [
     FlexLayoutModule,
