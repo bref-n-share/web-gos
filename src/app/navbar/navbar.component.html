@@ -1,5 +1,12 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row fxLayout="row" fxLayoutAlign="center center">
-    <a routerLink="/">GOS Admin</a>
+    <div fxFlex="33" fxLayoutAlign="center center"></div>
+    <div fxFlex="33" fxLayoutAlign="center center">
+      <a routerLink="">GOS Admin</a>
+    </div>
+    <div fxFlex="33" fxLayoutAlign="end center">
+      <a *ngIf="!userService.user" routerLink="/login">Login</a>
+    </div>
+
   </mat-toolbar-row>
 </mat-toolbar>
