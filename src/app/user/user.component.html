@@ -1,0 +1,36 @@
+<div class="main-container"
+     fxLayout="row"
+     fxLayout.lt-md="column"
+     fxLayoutAlign="center center">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{ user.firstname + " " + user.lastname }}</mat-card-title>
+        <mat-card-subtitle>{{ user.username }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          Ci dessous, les informations sur votre compte :
+          Il est possible de modifier votre nom et prenom.
+        </p>
+        <p>
+          <b>Nom : </b> {{ user.lastname }}
+        </p>
+        <p>
+          <b>Prenom : </b> {{ user.firstname }}
+        </p>
+        <p>
+          <b>Structure : </b> {{ user.structure }}
+        </p>
+        <p>
+          <b>Status : </b> {{ user.status }}
+        </p>
+      </mat-card-content>
+      <mat-card-actions fxLayout="row"
+                        fxLayout.lt-md="column"
+                        fxLayoutAlign="center center">
+        <button mat-flat-button color="primary" (click)="modifyAccount()">MODIFIER</button>
+        <button mat-flat-button color="warn" (click)="deleteAccount()">SUPPRIMER</button>
+      </mat-card-actions>
+    </mat-card>
+</div>

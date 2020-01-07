@@ -28,6 +28,11 @@ import { MemberComponent } from './signup/member/member.component';
 import { SiteCreatorComponent } from './signup/site-creator/site-creator.component';
 import { OrgaCreatorComponent } from './signup/orga-creator/orga-creator.component';
 import { ConfirmAddressComponent } from './dialogs/confirm-address/confirm-address.component';
+import { HomeFooterComponent } from './home/home-footer/home-footer.component';
+import { UserComponent } from './user/user.component';
+import { DialogDeleteComponent } from './user/dialog-delete/dialog-delete.component';
+import { DialogModifyComponent } from './user/dialog-modify/dialog-modify.component';
+
 
 @NgModule({
   declarations: [
@@ -50,6 +55,10 @@ import { ConfirmAddressComponent } from './dialogs/confirm-address/confirm-addre
     SiteCreatorComponent,
     OrgaCreatorComponent,
     ConfirmAddressComponent,
+    HomeFooterComponent,
+    UserComponent,
+    DialogDeleteComponent,
+    DialogModifyComponent,
   ],
   imports: [
     FlexLayoutModule,
@@ -69,6 +78,8 @@ import { ConfirmAddressComponent } from './dialogs/confirm-address/confirm-addre
   entryComponents: [
     OrgaDetailsComponent,
     ConfirmAddressComponent
+    DialogDeleteComponent,
+    DialogModifyComponent
   ],
   bootstrap: [AppComponent]
 })
