@@ -14,12 +14,7 @@ export class DialogDeleteComponent {
     @Inject(MAT_DIALOG_DATA) public user: User) {}
 
   deleted(isDeleted: boolean): void {
-    if(isDeleted) {
-      this.dialogRef.close(true);
-    } else {
-      this.dialogRef.close(false);
-
-    }
+      this.dialogRef.close(isDeleted);
   }
 }
 
