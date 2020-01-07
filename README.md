@@ -9,7 +9,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `npm install` to install all dependencies.
 
-A file called secrets.json will be required as it is not on git. Contact Stephane for more info.
+A file called environment.ts will be required as it is not on git. Contact Stephane for more info.
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 

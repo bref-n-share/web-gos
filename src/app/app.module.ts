@@ -1,4 +1,3 @@
-import secrets from '../environments/secrets.json';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -23,6 +22,7 @@ import { FacebookComponent } from './notify/facebook/facebook.component';
 import {HttpClientModule} from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { HomeFooterComponent } from './home/home-footer/home-footer.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +39,7 @@ import { environment } from '../environments/environment';
     OrgaDetailsComponent,
     NotifyComponent,
     FacebookComponent,
+    HomeFooterComponent,
   ],
   imports: [
     FlexLayoutModule,
@@ -48,7 +49,7 @@ import { environment } from '../environments/environment';
     AppRoutingModule,
     FormsModule,
     AgmCoreModule.forRoot({
-      apiKey: secrets.mapsApiKey
+      apiKey: environment.mapsApiKey
     }),
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
