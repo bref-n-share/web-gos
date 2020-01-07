@@ -5,6 +5,7 @@ import {AuthGuard} from './auth.guard';
 import {GosComponent} from './gos/gos.component';
 import {OrgaComponent} from './orga/orga.component';
 import {NotifyComponent} from './notify/notify.component';
+import {UserComponent} from './user/user.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'gos', component: GosComponent, canActivate: [AuthGuard] },
   { path: 'organization', component: OrgaComponent, canActivate: [AuthGuard] },
   { path: 'notify', component: NotifyComponent, canActivate: [AuthGuard] },
+  { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

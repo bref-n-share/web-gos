@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Supprimer le compte ?</h1>
+<div mat-dialog-content>
+  <p>Email : {{ user.username }}</p>
+</div>
+<div mat-dialog-actions fxLayout="row"
+     fxLayoutAlign="center center">
+  <button mat-raised-button color="warn" (click)="deleted(true)">Oui</button>
+  <button mat-raised-button color="primary" (click)="deleted(false)">Non</button>
+</div>
