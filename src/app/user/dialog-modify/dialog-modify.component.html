@@ -1,0 +1,14 @@
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput [(ngModel)]="user.firstname" placeholder="Firstname">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="user.lastname" placeholder="Lastname">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions fxLayout="row"
+     fxLayout.lt-md="column"
+     fxLayoutAlign="center center">
+  <button mat-raised-button color="primary" (click)="saved()" >Enregistrer</button>
+  <button mat-raised-button color="warn" (click)="cancelled()">Annuler</button>
+</div>

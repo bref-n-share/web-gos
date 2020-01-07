@@ -23,6 +23,9 @@ import {HttpClientModule} from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { HomeFooterComponent } from './home/home-footer/home-footer.component';
+import { UserComponent } from './user/user.component';
+import { DialogDeleteComponent } from './user/dialog-delete/dialog-delete.component';
+import { DialogModifyComponent } from './user/dialog-modify/dialog-modify.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,9 @@ import { HomeFooterComponent } from './home/home-footer/home-footer.component';
     NotifyComponent,
     FacebookComponent,
     HomeFooterComponent,
+    UserComponent,
+    DialogDeleteComponent,
+    DialogModifyComponent,
   ],
   imports: [
     FlexLayoutModule,
@@ -56,7 +62,9 @@ import { HomeFooterComponent } from './home/home-footer/home-footer.component';
   ],
   providers: [GoogleMapsAPIWrapper],
   entryComponents: [
-    OrgaDetailsComponent
+    OrgaDetailsComponent,
+    DialogDeleteComponent,
+    DialogModifyComponent
   ],
   bootstrap: [AppComponent]
 })
