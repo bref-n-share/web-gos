@@ -2,3 +2,24 @@ a {
   color: white;
   text-decoration: none;
 }
+
+a:hover {
+  cursor: pointer;
+}
+
+.logged-options > a {
+  margin: 0 5%;
+}
+
+@media screen and (max-width: 959px) {
+  .logged-options {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  .navbar-button-container {
+    display: none !important;
+  }
+}
+
