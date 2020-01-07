@@ -3,7 +3,6 @@
   <p>Email : {{ user.username }}</p>
 </div>
 <div mat-dialog-actions fxLayout="row"
-     fxLayout.lt-md="column"
      fxLayoutAlign="center center">
   <button mat-raised-button color="warn" (click)="deleted(true)">Oui</button>
   <button mat-raised-button color="primary" (click)="deleted(false)">Non</button>
