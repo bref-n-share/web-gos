@@ -39,6 +39,7 @@ export class MapsService {
             lat: results[0].geometry.location.lat(),
             lng: results[0].geometry.location.lng(),
             formatted_address: results[0].formatted_address,
+            address_components: results[0].address_components
           });
         } else {
           alert('Sorry, this search produced no results.');

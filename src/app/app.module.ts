@@ -27,6 +27,7 @@ import { SignupComponent } from './signup/signup.component';
 import { MemberComponent } from './signup/member/member.component';
 import { SiteCreatorComponent } from './signup/site-creator/site-creator.component';
 import { OrgaCreatorComponent } from './signup/orga-creator/orga-creator.component';
+import { ConfirmAddressComponent } from './dialogs/confirm-address/confirm-address.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { OrgaCreatorComponent } from './signup/orga-creator/orga-creator.compone
     MemberComponent,
     SiteCreatorComponent,
     OrgaCreatorComponent,
+    ConfirmAddressComponent,
   ],
   imports: [
     FlexLayoutModule,
@@ -65,7 +67,8 @@ import { OrgaCreatorComponent } from './signup/orga-creator/orga-creator.compone
   ],
   providers: [GoogleMapsAPIWrapper],
   entryComponents: [
-    OrgaDetailsComponent
+    OrgaDetailsComponent,
+    ConfirmAddressComponent
   ],
   bootstrap: [AppComponent]
 })

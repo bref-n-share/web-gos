@@ -2,7 +2,7 @@
   <span>Je suis membre d'une association et je souhaite la rejoindre dans Bref-N-Share</span>
   <mat-form-field>
     <mat-label>Je souhaite rejoindre l'association</mat-label>
-    <mat-select [ngModel]="memberModel">
+    <mat-select [(ngModel)]="memberModel">
       <mat-option *ngFor="let a of associations" [value]="a">
         {{a.name}}
       </mat-option>

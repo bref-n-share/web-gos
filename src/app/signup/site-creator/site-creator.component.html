@@ -1,1 +1,30 @@
-<p>site-creator works!</p>
+<div fxLayout="column">
+  <agm-map [latitude]="mapData.lat" [longitude]="mapData.lng" [zoom]="mapData.zoom">
+    <agm-marker *ngIf="marker" [longitude]="marker.lng" [latitude]="marker.lat"></agm-marker>
+  </agm-map>
+
+  <div fxLayout="column" fxLayoutAlign="center center" class="form-container">
+    <mat-form-field>
+      <mat-label>Nom du site</mat-label>
+      <input matInput [(ngModel)]="siteCreatorModel.name"/>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Adresse</mat-label>
+      <input matInput (focusout)="pinpoint()" [(ngModel)]="siteCreatorModel.address"/>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Ce site appartient à</mat-label>
+      <mat-select [(ngModel)]="siteCreatorModel.association">
+        <mat-option *ngFor="let a of associations" [value]="a">
+          {{a.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div fxLayoutAlign="center center">
+      <button mat-button (click)="validate()">Valider</button>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,7 @@
+agm-map {
+  height: 25vh;
+}
+
+.form-container > mat-form-field, .form-container > div {
+  width: 75%;
+}
