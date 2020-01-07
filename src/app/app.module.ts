@@ -77,7 +77,7 @@ import { DialogModifyComponent } from './user/dialog-modify/dialog-modify.compon
   providers: [GoogleMapsAPIWrapper],
   entryComponents: [
     OrgaDetailsComponent,
-    ConfirmAddressComponent
+    ConfirmAddressComponent,
     DialogDeleteComponent,
     DialogModifyComponent
   ],
