@@ -1,0 +1,17 @@
+<div fxLayout="column">
+  <div fxLayout="column" fxLayoutAlign="center center" class="form-container">
+    <mat-form-field>
+      <mat-label>Nom du site</mat-label>
+      <input matInput [(ngModel)]="modelOrga.name"/>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Adresse siège social</mat-label>
+      <input matInput [(ngModel)]="modelOrga.address"/>
+    </mat-form-field>
+
+    <div fxLayoutAlign="center center">
+      <button mat-button (click)="validate()">Valider</button>
+    </div>
+  </div>
+</div>
+

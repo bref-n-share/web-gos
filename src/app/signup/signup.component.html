@@ -1,0 +1,49 @@
+<div fxLayoutAlign="center center">
+  <mat-horizontal-stepper labelPosition="bottom" fxFlex="75" fxFlex.lt-md="100" [linear]="false" #stepper>
+    <mat-step [stepControl]="signup">
+      <form [formGroup]="signup" fxLayout="column" fxLayoutAlign="center center">
+        <ng-template matStepLabel>Inscription</ng-template>
+        <mat-form-field>
+          <mat-label>Nom</mat-label>
+          <input matInput formControlName="last_name" required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Prénom</mat-label>
+          <input matInput formControlName="first_name" required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Adresse mail</mat-label>
+          <input matInput type="email" formControlName="email" required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Mot de passe</mat-label>
+          <input type="password" matInput formControlName="password" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Suivant</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <div>
+        <ng-template matStepLabel>Qui êtes-vous ?</ng-template>
+        <mat-tab-group>
+          <mat-tab label="Membre d'une association">
+            <app-member></app-member>
+          </mat-tab>
+          <mat-tab label="Créateur d'un site">
+            <app-site-creator></app-site-creator>
+          </mat-tab>
+          <mat-tab label="Créateur d'une organisation">
+            <app-orga-creator></app-orga-creator>
+          </mat-tab>
+        </mat-tab-group>
+
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Terminé</ng-template>
+      <span>{{lastStepMessage}}</span>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>

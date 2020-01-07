@@ -13,7 +13,7 @@ import { FiltersSmallComponent } from './gos/filters-small/filters-small.compone
 import { MessageComponent } from './gos/message/message.component';
 import { FiltersComponent } from './gos/filters/filters.component';
 import { CommentComponent } from './gos/message/comment/comment.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OrgaComponent } from './orga/orga.component';
 import {AgmCoreModule, GoogleMapsAPIWrapper} from '@agm/core';
 import { OrgaDetailsComponent } from './orga/orga-details/orga-details.component';
@@ -22,10 +22,17 @@ import { FacebookComponent } from './notify/facebook/facebook.component';
 import {HttpClientModule} from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+import { MemberComponent } from './signup/member/member.component';
+import { SiteCreatorComponent } from './signup/site-creator/site-creator.component';
+import { OrgaCreatorComponent } from './signup/orga-creator/orga-creator.component';
+import { ConfirmAddressComponent } from './dialogs/confirm-address/confirm-address.component';
 import { HomeFooterComponent } from './home/home-footer/home-footer.component';
 import { UserComponent } from './user/user.component';
 import { DialogDeleteComponent } from './user/dialog-delete/dialog-delete.component';
 import { DialogModifyComponent } from './user/dialog-modify/dialog-modify.component';
+
 
 @NgModule({
   declarations: [
@@ -42,6 +49,12 @@ import { DialogModifyComponent } from './user/dialog-modify/dialog-modify.compon
     OrgaDetailsComponent,
     NotifyComponent,
     FacebookComponent,
+    LoginComponent,
+    SignupComponent,
+    MemberComponent,
+    SiteCreatorComponent,
+    OrgaCreatorComponent,
+    ConfirmAddressComponent,
     HomeFooterComponent,
     UserComponent,
     DialogDeleteComponent,
@@ -58,11 +71,13 @@ import { DialogModifyComponent } from './user/dialog-modify/dialog-modify.compon
       apiKey: environment.mapsApiKey
     }),
     HttpClientModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    ReactiveFormsModule
   ],
   providers: [GoogleMapsAPIWrapper],
   entryComponents: [
     OrgaDetailsComponent,
+    ConfirmAddressComponent
     DialogDeleteComponent,
     DialogModifyComponent
   ],
