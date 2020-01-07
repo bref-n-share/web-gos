@@ -1,4 +1,4 @@
-<div fxLayoutAlign="center center">
+<main fxLayoutAlign="center center">
   <mat-horizontal-stepper labelPosition="bottom" fxFlex="75" fxFlex.lt-md="100" [linear]="false" #stepper>
     <mat-step [stepControl]="signup">
       <form [formGroup]="signup" fxLayout="column" fxLayoutAlign="center center">
@@ -46,4 +46,4 @@
       <span>{{lastStepMessage}}</span>
     </mat-step>
   </mat-horizontal-stepper>
-</div>
+</main>

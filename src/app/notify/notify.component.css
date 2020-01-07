@@ -1,5 +1,10 @@
 main {
   width: 100%;
+  height: calc(100vh - 64px);
+}
+
+main > div {
+  width: 100%;
 }
 
 @media screen and (max-width: 959px) {
