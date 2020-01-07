@@ -1,18 +1,22 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row fxLayout="row" fxLayoutAlign="center center">
-    <div fxFlex="33" fxLayoutAlign="center center"></div>
+    <div fxFlex="33" fxLayoutAlign="start center">
+      <div *ngIf="userService.user" class="navbar-button-container" >
+        <button mat-button aria-label="Toggle sidenav" mat-icon-button (click)="openSidevav()">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+      </div>
+    </div>
     <div fxFlex="33" fxLayoutAlign="center center">
       <a routerLink="">GOS Admin</a>
     </div>
     <div fxFlex="33" fxLayoutAlign="end center">
       <a *ngIf="!userService.user" routerLink="/login">Login</a>
-      <div *ngIf="userService.user" fxFlex="25" fxLayout="row" fxLayoutAlign="space-between center">
+      <div *ngIf="userService.user" fxLayout="row" fxLayoutAlign="space-evenly center" class="logged-options">
         <a>{{userService.user.username}}</a>
-        <a href="" fxLayoutAlign="center center"><mat-icon>account_circle</mat-icon></a>
-        <a href="" fxLayoutAlign="center center" (click)="logout()"><mat-icon>exit_to_app</mat-icon></a>
+        <a routerLink="/user" fxLayoutAlign="center center"><mat-icon>account_circle</mat-icon></a>
+        <a fxLayoutAlign="center center" (click)="logout()"><mat-icon>exit_to_app</mat-icon></a>
       </div>
-
     </div>
-
   </mat-toolbar-row>
 </mat-toolbar>

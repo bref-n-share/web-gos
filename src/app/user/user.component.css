@@ -13,3 +13,7 @@ mat-card {
 button {
   margin: 2%;
 }
+
+.main-container {
+  height: calc(100vh - 64px);
+}
