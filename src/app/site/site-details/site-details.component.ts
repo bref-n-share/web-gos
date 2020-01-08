@@ -3,13 +3,13 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-orga-details',
-  templateUrl: './orga-details.component.html',
-  styleUrls: ['./orga-details.component.css']
+  templateUrl: './site-details.component.html',
+  styleUrls: ['./site-details.component.css']
 })
-export class OrgaDetailsComponent implements OnInit {
+export class SiteDetailsComponent implements OnInit {
 
   constructor(
-    public dialogRef: MatDialogRef<OrgaDetailsComponent>,
+    public dialogRef: MatDialogRef<SiteDetailsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
 

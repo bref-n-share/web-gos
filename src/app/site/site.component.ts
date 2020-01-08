@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { AgmCoreModule } from '@agm/core';
 import {MatDialog} from '@angular/material';
-import {OrgaDetailsComponent} from './orga-details/orga-details.component';
+import {SiteDetailsComponent} from './site-details/site-details.component';
 import {MapsService} from '../services/maps.service';
 
 @Component({
   selector: 'app-orga',
-  templateUrl: './orga.component.html',
-  styleUrls: ['./orga.component.css']
+  templateUrl: './site.component.html',
+  styleUrls: ['./site.component.css']
 })
-export class OrgaComponent implements OnInit {
+export class SiteComponent implements OnInit {
 
   constructor(
     private dialog: MatDialog,
@@ -28,7 +28,7 @@ export class OrgaComponent implements OnInit {
   }
 
   onMarkerClick() {
-    const ref = this.dialog.open(OrgaDetailsComponent, {
+    const ref = this.dialog.open(SiteDetailsComponent, {
       data: {...this.orga}
     });
 
