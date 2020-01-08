@@ -2,13 +2,14 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Demand} from '../../models/Demand';
 
 @Component({
-  selector: 'app-message',
-  templateUrl: './message.component.html',
-  styleUrls: ['./message.component.css']
+  selector: 'app-demand',
+  templateUrl: './demand.component.html',
+  styleUrls: ['./demand.component.css']
 })
-export class MessageComponent implements OnInit {
+export class DemandComponent implements OnInit {
 
   constructor() { }
+
   @Input() demand: Demand;
 
   ngOnInit() {

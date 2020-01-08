@@ -1,19 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-// @ts-ignore
-import demandsMock from '../../assets/mock/demands.json';
 import {Demand} from '../models/Demand';
 import {DemandsService} from '../services/demands.service';
+import demandsMock from '../../assets/mock/demands.json';
 
 @Component({
-  selector: 'app-gos',
-  templateUrl: './gos.component.html',
-  styleUrls: ['./gos.component.css']
+  selector: 'app-my-demands',
+  templateUrl: './my-demands.component.html',
+  styleUrls: ['./my-demands.component.css']
 })
-export class GosComponent implements OnInit {
-
+export class MyDemandsComponent implements OnInit {
   demands: Demand[];
   filterModel = {};
-
   constructor(
     private demandsService: DemandsService
   ) {

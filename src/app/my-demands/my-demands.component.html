@@ -1,4 +1,4 @@
-<div id="main">
+<main>
   <app-filters-small [modelFilter]="filterModel"></app-filters-small>
   <div class="main-container" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center center">
     <div fxFlex="33" fxFlex.lt-md="0" class="filter-big-container" fxLayoutAlign="center start">
@@ -7,8 +7,8 @@
         <app-filter-big [modelsFilter]="filterModel"></app-filter-big>
       </mat-card>
     </div>
-    <div fxFlex="66" fxFlex.lt-md="100">
-      <app-message *ngFor="let demand of demands" [demand]="demand"></app-message>
+    <div fxFlex="66" fxFlex.lt-md="100" class="full-width">
+      <app-demand *ngFor="let demand of demands" [demand]="demand"></app-demand>
     </div>
   </div>
-</div>
+</main>
