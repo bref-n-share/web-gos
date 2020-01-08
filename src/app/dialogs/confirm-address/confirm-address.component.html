@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Adresse trouvée</h1>
+<div mat-dialog-content>
+  <p>Nous avons trouvé cette adresse : </p>
+  <p>{{data}}</p>
+  <p>Si cette adresse ne correspond pas à ce que vous avez entré, merci de réessayer.</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Je réessaye</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>C'est tout bon</button>
+</div>

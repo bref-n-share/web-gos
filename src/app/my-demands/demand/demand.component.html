@@ -1,0 +1,21 @@
+<mat-card fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center center">
+  <mat-card-content fxFlex="75">
+    <mat-card-title>{{demand.title}}</mat-card-title>
+    <div>
+      <span>{{demand.description}}</span>
+    </div>
+  </mat-card-content>
+  <mat-card-actions fxFlex="25" fxLayout="row" fxLayoutAlign="space-between center" class="full-width">
+    <div fxLayout="row" fxLayoutAlign="space-evenly center">
+      <button mat-icon-button aria-label="Icon to notify users in mobile app" fxLayoutAlign="center center"><img src="/assets/img/icons/smartphone.png" alt="logo smartphone"/></button>
+      <button mat-icon-button aria-label="Icon to notify users on twitter" fxLayoutAlign="center center"><img src="/assets/img/icons/twitter.png" alt="logo twitter"/></button>
+      <button mat-icon-button aria-label="Icon to notify users on facebook" fxLayoutAlign="center center"><img src="/assets/img/icons/facebook.png" alt="logo facebook"/></button>
+      <button mat-icon-button aria-label="Icon to notify users on gos messaging" fxLayoutAlign="center center"><img src="/assets/img/icons/conversation.png" alt="logo gos"/></button>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <button mat-icon-button aria-label="Example icon-button with a heart icon">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+  </mat-card-actions>
+</mat-card>

@@ -5,7 +5,7 @@ import {Demand} from '../models/Demand';
 import {DemandsService} from '../services/demands.service';
 
 @Component({
-  selector: 'app-demands',
+  selector: 'app-gos',
   templateUrl: './gos.component.html',
   styleUrls: ['./gos.component.css']
 })

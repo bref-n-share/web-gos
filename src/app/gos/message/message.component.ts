@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Demand} from '../../models/Demand';
 
 @Component({
-  selector: 'app-demand',
+  selector: 'app-message',
   templateUrl: './message.component.html',
   styleUrls: ['./message.component.css']
 })

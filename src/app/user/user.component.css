@@ -1,0 +1,19 @@
+mat-card {
+  margin: 5%;
+}
+.example-card {
+  max-width: 400px;
+}
+
+.example-header-image {
+  background-image: url('/assets/img/empty-profile-picture.png');
+  background-size: cover;
+}
+
+button {
+  margin: 2%;
+}
+
+.main-container {
+  height: calc(100vh - 64px);
+}
