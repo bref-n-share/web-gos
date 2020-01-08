@@ -14,9 +14,9 @@ import { MessageComponent } from './gos/message/message.component';
 import { FiltersComponent } from './gos/filters/filters.component';
 import { CommentComponent } from './gos/message/comment/comment.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { OrgaComponent } from './orga/orga.component';
+import { SiteComponent } from './site/site.component';
 import {AgmCoreModule, GoogleMapsAPIWrapper} from '@agm/core';
-import { OrgaDetailsComponent } from './orga/orga-details/orga-details.component';
+import { SiteDetailsComponent } from './site/site-details/site-details.component';
 import { NotifyComponent } from './notify/notify.component';
 import { FacebookComponent } from './notify/facebook/facebook.component';
 import {HttpClientModule} from '@angular/common/http';
@@ -49,8 +49,8 @@ import {CreateAccountComponent} from './create-account/create-account.component'
     MessageComponent,
     FiltersComponent,
     CommentComponent,
-    OrgaComponent,
-    OrgaDetailsComponent,
+    SiteComponent,
+    SiteDetailsComponent,
     NotifyComponent,
     FacebookComponent,
     LoginComponent,
@@ -83,7 +83,7 @@ import {CreateAccountComponent} from './create-account/create-account.component'
   ],
   providers: [GoogleMapsAPIWrapper],
   entryComponents: [
-    OrgaDetailsComponent,
+    SiteDetailsComponent,
     ConfirmAddressComponent,
     DialogDeleteComponent,
     DialogModifyComponent
