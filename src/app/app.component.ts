@@ -13,4 +13,12 @@ export class AppComponent {
     private userService: UserService
   ) {
   }
+
+  getUser() {
+    return this.userService.user;
+  }
+
+  logout() {
+    this.userService.logout();
+  }
 }
