@@ -32,6 +32,8 @@ import { HomeFooterComponent } from './home/home-footer/home-footer.component';
 import { UserComponent } from './user/user.component';
 import { DialogDeleteComponent } from './user/dialog-delete/dialog-delete.component';
 import { DialogModifyComponent } from './user/dialog-modify/dialog-modify.component';
+import { MyDemandsComponent } from './my-demands/my-demands.component';
+import { DemandComponent } from './my-demands/demand/demand.component';
 
 
 @NgModule({
@@ -59,6 +61,8 @@ import { DialogModifyComponent } from './user/dialog-modify/dialog-modify.compon
     UserComponent,
     DialogDeleteComponent,
     DialogModifyComponent,
+    MyDemandsComponent,
+    DemandComponent,
   ],
   imports: [
     FlexLayoutModule,
