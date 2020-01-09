@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {MapsService} from '../../services/maps.service';
 import {BecomeMember, CreateSite} from '../../models/commands/signup';
 import {SignupCommandsService} from '../../services/signup-commands.service';
+import {StructureService} from '../../services/structure.service';
+import {Structure} from '../../models/Structure';
+import {AccountApiService} from '../../services/account-api.service';
 
 @Component({
   selector: 'app-site-creator',
@@ -12,28 +15,17 @@ export class SiteCreatorComponent implements OnInit {
 
   constructor(
     private mapsService: MapsService,
-    private commandsService: SignupCommandsService
+    private commandsService: SignupCommandsService,
+    private structureService: StructureService,
+    private accountApiService: AccountApiService,
   ) { }
 
-  associations = [
-    {
-      id: 1,
-      name: 'Emmaus'
-    },
-    {
-      id: 2,
-      name: 'Make A Wish'
-    },
-    {
-      id: 3,
-      name: 'Autre truc'
-    }
-  ];
+  organizations: Structure[] = [];
 
   siteCreatorModel = {
     name: '',
     address: '',
-    association: null,
+    organization: null,
     address_components: []
   };
 
@@ -45,6 +37,13 @@ export class SiteCreatorComponent implements OnInit {
   };
 
   ngOnInit() {
+    this.structureService.getStructures().subscribe((structures) => {
+      this.organizations = structures.filter((s) => s.type === 'organization');
+    });
+  }
+
+  isLoading(): boolean {
+    return this.accountApiService.loading;
   }
 
   pinpoint() {

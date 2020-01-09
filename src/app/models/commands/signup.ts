@@ -1,5 +1,5 @@
 export interface BecomeMember {
-  association: object;
+  membership: object;
 }
 
 export interface CreateSite {
