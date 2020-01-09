@@ -1,6 +1,5 @@
 <main fxLayoutAlign="center center">
-<!--  TODO : linear true when prod  -->
-  <mat-horizontal-stepper labelPosition="bottom" fxFlex="75" fxFlex.lt-md="100" [linear]="false" #stepper>
+  <mat-horizontal-stepper labelPosition="bottom" fxFlex="75" fxFlex.lt-md="100" [linear]="true" #stepper>
     <mat-step [stepControl]="signup" >
       <form [formGroup]="signup" fxLayout="column" fxLayoutAlign="center center">
         <ng-template matStepLabel>Inscription</ng-template>
