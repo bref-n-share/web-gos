@@ -4,6 +4,7 @@ import {SignupCommandsService} from '../services/signup-commands.service';
 import {MatSnackBar, MatStepper} from '@angular/material';
 import {AccountApiService} from '../services/account-api.service';
 import {User} from '../models/User';
+import {BecomeMember, CreateOrganization, CreateSite} from '../models/commands/signup';
 
 @Component({
   selector: 'app-signup',
@@ -18,9 +19,9 @@ export class SignupComponent implements OnInit {
   lastStepMessage = '';
 
   lastStepMessageList = {
-    association: 'Merci de votre inscription. Un message a été envoyé à l\'administrateur de {{name}} qui l\'évaluera et ' +
+    membership: 'Merci de votre inscription. Un message a été envoyé à l\'administrateur l\'organisation qui l\'évaluera et ' +
       'pourra l\'accepter. Vous receverez un mail de confirmation une fois votre demande validée.',
-    site: 'Merci pour votre inscription. Un administrateur de {{name}} va recevoir et traiter votre demande d\'ajout de site.',
+    site: 'Merci pour votre inscription. Un administrateur de l\'organisation va recevoir et traiter votre demande d\'ajout de site.',
     organization: 'Merci, c\'est bon pour nous.'
   };
 
@@ -46,6 +47,7 @@ export class SignupComponent implements OnInit {
           value[Object.keys(value)[0]].name);
         this.createAccount(value).then((toSend: User) => {
           this.accountApiService.createUser(toSend).subscribe(ret => {
+            this.commandsService.commandController.next(null);
             this.signupStepper.next();
             this.snackBar.open('L\'utilisateur a été créé', 'OK', {
               verticalPosition: 'top',
@@ -67,12 +69,13 @@ export class SignupComponent implements OnInit {
     return new Promise(resolve => {
       let toSend = {...this.signup.getRawValue()};
       switch (Object.keys(action)[0]) {
-        case 'association':
-          toSend.structure = action.association.id;
+        case 'membership':
+          toSend.structure = action.membership.id;
           break;
         case 'site':
           toSend = this.fillWithAddress(toSend, action.site);
-          toSend.structure.type = Object.keys(action)[0];
+          toSend.structure.type = 'site';
+          toSend.structure.organization = action.site.organization;
           break;
         case 'organization':
           toSend = this.fillWithAddress(toSend, action.organization);

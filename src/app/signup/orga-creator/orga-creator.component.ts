@@ -5,6 +5,7 @@ import {SignupCommandsService} from '../../services/signup-commands.service';
 import {MatDialog} from '@angular/material';
 import {ConfirmAddressComponent} from '../../dialogs/confirm-address/confirm-address.component';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AccountApiService} from '../../services/account-api.service';
 
 @Component({
   selector: 'app-orga-creator',
@@ -20,6 +21,7 @@ export class OrgaCreatorComponent implements OnInit {
     private commandsService: SignupCommandsService,
     private dialog: MatDialog,
     private formBuilder: FormBuilder,
+    private accountApiService: AccountApiService,
   ) {
   }
 
@@ -38,6 +40,9 @@ export class OrgaCreatorComponent implements OnInit {
     });
   }
 
+  isLoading(): boolean {
+    return this.accountApiService.loading;
+  }
 
   validate(data) {
     if (data.status === 'INVALID') {

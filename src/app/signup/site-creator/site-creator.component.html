@@ -15,15 +15,16 @@
 
     <mat-form-field>
       <mat-label>Ce site appartient à</mat-label>
-      <mat-select [(ngModel)]="siteCreatorModel.association">
-        <mat-option *ngFor="let a of associations" [value]="a">
+      <mat-select [(ngModel)]="siteCreatorModel.organization">
+        <mat-option *ngFor="let a of organizations" [value]="a.id">
           {{a.name}}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
     <div fxLayoutAlign="center center">
-      <button mat-button (click)="validate()">Valider</button>
+      <button *ngIf="!isLoading()" mat-button type="submit">Valider</button>
+      <mat-spinner *ngIf="isLoading()" diameter="36"></mat-spinner>
     </div>
   </div>
 </div>

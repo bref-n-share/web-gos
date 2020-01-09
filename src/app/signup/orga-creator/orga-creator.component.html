@@ -11,7 +11,8 @@
       </mat-form-field>
 
       <div fxLayoutAlign="center center">
-        <button mat-button type="submit" >Valider</button>
+        <button *ngIf="!isLoading()" mat-button type="submit">Valider</button>
+        <mat-spinner *ngIf="isLoading()" diameter="36"></mat-spinner>
       </div>
   </form>
 </div>
