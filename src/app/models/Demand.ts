@@ -1,5 +1,5 @@
 export interface Demand {
-  title: string,
+  title: string;
   author: string;
   img: string;
   description: string;

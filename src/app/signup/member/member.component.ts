@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {BecomeMember} from '../../models/commands/signup';
 import {SignupCommandsService} from '../../services/signup-commands.service';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AccountApiService} from '../../services/account-api.service';
+import {Structure} from '../../models/Structure';
 
 @Component({
   selector: 'app-member',
@@ -10,31 +13,25 @@ import {SignupCommandsService} from '../../services/signup-commands.service';
 export class MemberComponent implements OnInit {
 
   constructor(
-    private commandsService: SignupCommandsService
+    private commandsService: SignupCommandsService,
+    private formBuilder: FormBuilder,
+    private accountApiService: AccountApiService
   ) { }
 
-  memberModel: object = null;
-
-  associations = [
-    {
-      id: 1,
-      name: 'Emmaus'
-    },
-    {
-      id: 2,
-      name: 'Make A Wish'
-    },
-    {
-      id: 3,
-      name: 'Autre truc'
-    }
-  ];
+  joinAsso: FormGroup;
+  site: Structure[] = [];
 
   ngOnInit() {
+    this.joinAsso = this.formBuilder.group({
+      siteForm: ['', Validators.required],
+    });
+    this.accountApiService.getStructures().subscribe((result: Structure[]) => {
+        this.site = result.filter(r => r.type === 'site');
+    });
   }
 
-  validate() {
-    const action: BecomeMember = {association: this.memberModel};
+  validate(data) {
+    const action: BecomeMember = {association: data.value.siteForm};
     this.commandsService.commandController.next(action);
   }
 
