@@ -36,6 +36,7 @@ import { MyDemandsComponent } from './my-demands/my-demands.component';
 import { DemandComponent } from './my-demands/demand/demand.component';
 import { AccountAlreadyCreatedComponent } from './signup/account-already-created/account-already-created.component';
 import {JwtInterceptor} from "./helpers/jwt.interceptor";
+import { DemandFormComponent } from './demand-form/demand-form.component';
 
 
 @NgModule({
@@ -65,7 +66,8 @@ import {JwtInterceptor} from "./helpers/jwt.interceptor";
     DialogModifyComponent,
     MyDemandsComponent,
     DemandComponent,
-    AccountAlreadyCreatedComponent
+    AccountAlreadyCreatedComponent,
+    DemandFormComponent,
   ],
   imports: [
     FlexLayoutModule,
