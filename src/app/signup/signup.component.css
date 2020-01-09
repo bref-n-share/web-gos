@@ -5,3 +5,7 @@ main {
 mat-horizontal-stepper{
   background-color: #fafafa;
 }
+
+::ng-deep .created .mat-horizontal-stepper-header {
+  pointer-events: none !important;
+}

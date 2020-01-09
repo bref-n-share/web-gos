@@ -18,6 +18,8 @@ export class SignupComponent implements OnInit {
 
   lastStepMessage = '';
 
+  accountCreated = false;
+
   lastStepMessageList = {
     membership: 'Merci de votre inscription. Un message a été envoyé à l\'administrateur l\'organisation qui l\'évaluera et ' +
       'pourra l\'accepter. Vous receverez un mail de confirmation une fois votre demande validée.',
@@ -47,6 +49,7 @@ export class SignupComponent implements OnInit {
           value[Object.keys(value)[0]].name);
         this.createAccount(value).then((toSend: User) => {
           this.accountApiService.createUser(toSend).subscribe(ret => {
+            this.accountCreated = true;
             this.commandsService.commandController.next(null);
             this.signupStepper.next();
             this.snackBar.open('L\'utilisateur a été créé', 'OK', {
@@ -55,6 +58,8 @@ export class SignupComponent implements OnInit {
               duration: 1000
             });
           }, error => {
+            this.commandsService.commandController.next(null);
+            this.accountApiService.loading = false;
             this.snackBar.open('Erreur à la création : ' + error.error, 'OK', {
               verticalPosition: 'top',
               horizontalPosition: 'center'
