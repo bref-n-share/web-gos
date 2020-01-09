@@ -9,6 +9,7 @@ import {LoginComponent} from './login/login.component';
 import {SignupComponent} from './signup/signup.component';
 import {UserComponent} from './user/user.component';
 import {MyDemandsComponent} from './my-demands/my-demands.component';
+import {DemandFormComponent} from './demand-form/demand-form.component';
 
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
   { path: 'demands', component: MyDemandsComponent, canActivate: [AuthGuard] },
+  { path: 'demand-form', component: DemandFormComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({
