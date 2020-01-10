@@ -38,6 +38,9 @@ export class MemberComponent implements OnInit {
   }
 
   validate(data) {
+    if (data.status === 'INVALID') {
+      return;
+    }
     const action: BecomeMember = {membership: data.value.siteForm};
     this.commandsService.commandController.next(action);
   }
