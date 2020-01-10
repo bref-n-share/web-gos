@@ -19,7 +19,7 @@ import {AgmCoreModule, GoogleMapsAPIWrapper} from '@agm/core';
 import { SiteDetailsComponent } from './site/site-details/site-details.component';
 import { NotifyComponent } from './notify/notify.component';
 import { FacebookComponent } from './notify/facebook/facebook.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { LoginComponent } from './login/login.component';
@@ -34,6 +34,7 @@ import { DialogDeleteComponent } from './user/dialog-delete/dialog-delete.compon
 import { DialogModifyComponent } from './user/dialog-modify/dialog-modify.component';
 import { MyDemandsComponent } from './my-demands/my-demands.component';
 import { DemandComponent } from './my-demands/demand/demand.component';
+import {JwtInterceptor} from "./helpers/jwt.interceptor";
 
 
 @NgModule({
@@ -78,7 +79,9 @@ import { DemandComponent } from './my-demands/demand/demand.component';
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     ReactiveFormsModule
   ],
-  providers: [GoogleMapsAPIWrapper],
+  providers: [GoogleMapsAPIWrapper,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+  ],
   entryComponents: [
     SiteDetailsComponent,
     ConfirmAddressComponent,
