@@ -4,7 +4,7 @@ import {SignupCommandsService} from '../services/signup-commands.service';
 import {MatSnackBar, MatStepper} from '@angular/material';
 import {AccountApiService} from '../services/account-api.service';
 import {User} from '../models/User';
-import {BecomeMember, CreateOrganization, CreateSite} from '../models/commands/signup';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -31,43 +31,58 @@ export class SignupComponent implements OnInit {
     private formBuilder: FormBuilder,
     private commandsService: SignupCommandsService,
     private accountApiService: AccountApiService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private router: Router
   ) {
+    try {
+      this.commandsService.commandController.subscribe(value => {
+        if (value) {
+          this.lastStepMessage = this.lastStepMessageList[Object.keys(value)[0]];
+          this.createAccount(value).then((toSend: User) => {
+            this.accountApiService.createUser(toSend).subscribe(ret => {
+              this.accountCreated = true;
+              this.signupStepper.next();
+              this.signup.reset();
+              this.snackBar.open('L\'utilisateur a été créé', 'OK', {
+                verticalPosition: 'top',
+                horizontalPosition: 'center',
+                duration: 1000
+              });
+              this.commandsService.commandController.unsubscribe();
+            }, error => {
+              console.error('error', error);
+              this.accountApiService.loading = false;
+              this.snackBar.open('Erreur à la création : ' + error.error, 'OK', {
+                verticalPosition: 'top',
+                horizontalPosition: 'center'
+              });
+            });
+          });
+          this.commandsService.commandController.next(null);
+        }
+      });
+    } catch (e) {
+      console.error('e', e);
+      if (e.message === 'object unsubscribed') {
+        this.router.navigate(['account-already-created']);
+      } else {
+        this.snackBar.open('Erreur : ' + e.message, 'OK', {
+          verticalPosition: 'top',
+          horizontalPosition: 'center'
+        });
+      }
+    }
   }
 
   ngOnInit() {
+    console.log('on init');
     this.signup = this.formBuilder.group({
       lastname: ['', Validators.minLength(2)],
       firstname: ['', Validators.minLength(2)],
       email: ['', Validators.email],
       password: ['', Validators.required],
     });
-
-    this.commandsService.commandController.subscribe(value => {
-      if (value) {
-        this.lastStepMessage = this.lastStepMessageList[Object.keys(value)[0]].replace('{{name}}',
-          value[Object.keys(value)[0]].name);
-        this.createAccount(value).then((toSend: User) => {
-          this.accountApiService.createUser(toSend).subscribe(ret => {
-            this.accountCreated = true;
-            this.commandsService.commandController.next(null);
-            this.signupStepper.next();
-            this.snackBar.open('L\'utilisateur a été créé', 'OK', {
-              verticalPosition: 'top',
-              horizontalPosition: 'center',
-              duration: 1000
-            });
-          }, error => {
-            this.commandsService.commandController.next(null);
-            this.accountApiService.loading = false;
-            this.snackBar.open('Erreur à la création : ' + error.error, 'OK', {
-              verticalPosition: 'top',
-              horizontalPosition: 'center'
-            });
-          });
-        });
-      }
-    });
+    this.commandsService.commandController.next(null);
   }
 
   createAccount(action) {

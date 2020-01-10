@@ -9,6 +9,7 @@ import {LoginComponent} from './login/login.component';
 import {SignupComponent} from './signup/signup.component';
 import {UserComponent} from './user/user.component';
 import {MyDemandsComponent} from './my-demands/my-demands.component';
+import { AccountAlreadyCreatedComponent } from './signup/account-already-created/account-already-created.component';
 
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
   { path: 'demands', component: MyDemandsComponent, canActivate: [AuthGuard] },
+  { path: 'account-already-created', component: AccountAlreadyCreatedComponent },
   // otherwise redirect to home
   { path: '**', redirectTo: '' }
 ];

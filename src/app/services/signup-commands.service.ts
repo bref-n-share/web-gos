@@ -7,7 +7,9 @@ import {BecomeMember, CreateOrganization, CreateSite} from '../models/commands/s
 })
 export class SignupCommandsService {
 
-  commandController = new BehaviorSubject<BecomeMember|CreateSite|CreateOrganization>(null);
+  commandController: BehaviorSubject<BecomeMember|CreateSite|CreateOrganization>;
 
-  constructor() { }
+  constructor() {
+    this.commandController = new BehaviorSubject<BecomeMember|CreateSite|CreateOrganization>(null);
+  }
 }

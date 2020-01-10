@@ -52,7 +52,6 @@ export class OrgaCreatorComponent implements OnInit {
     this.modelOrga.address = data.value.address;
     this.mapsService.findLocation(this.modelOrga.address).then(res => {
       if (res['formatted_address'] !== this.modelOrga.address) {
-        console.log('found this address', res['formatted_address']);
         this.dialog.open(ConfirmAddressComponent, {
           data: res['formatted_address'],
           width: '300px'
