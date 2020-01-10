@@ -20,6 +20,8 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
   { path: 'demands', component: MyDemandsComponent, canActivate: [AuthGuard] },
+  // otherwise redirect to home
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

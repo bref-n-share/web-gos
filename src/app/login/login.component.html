@@ -1,19 +1,20 @@
-<div fxLayoutAlign="center center" class="container">
+<form fxLayoutAlign="center center" class="container"
+      [formGroup]="login" (ngSubmit)="loginForm(login)">
   <mat-card>
     <mat-card-title class="center-align">Connexion</mat-card-title>
     <mat-card-content fxLayout="column" fxLayoutAlign="center center">
       <mat-form-field class="">
         <mat-label>Login</mat-label>
-        <input matInput [(ngModel)]="loginInfos.username"/>
+        <input type="email" matInput formControlName="username"  required/>
       </mat-form-field>
       <mat-form-field class="">
         <mat-label>Mot de passe</mat-label>
-        <input type="password" matInput [(ngModel)]="loginInfos.password"/>
+        <input type="password" matInput formControlName="password" required/>
       </mat-form-field>
     </mat-card-content>
     <mat-card-actions>
       <button mat-button routerLink="/signup">Pas encore de compte ?</button>
-      <button mat-button (click)="login()">Se connecter</button>
+      <button mat-button type="submit" >Se connecter</button>
     </mat-card-actions>
   </mat-card>
-</div>
+</form>
