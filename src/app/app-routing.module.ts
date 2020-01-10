@@ -22,6 +22,8 @@ const routes: Routes = [
   { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
   { path: 'demands', component: MyDemandsComponent, canActivate: [AuthGuard] },
   { path: 'account-already-created', component: AccountAlreadyCreatedComponent },
+  // otherwise redirect to home
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../services/user.service';
 import {Router} from '@angular/router';
-import {User} from '../models/User';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {MatSnackBar} from "@angular/material";
 
 @Component({
   selector: 'app-login',
@@ -12,22 +13,31 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private snackBar: MatSnackBar
   ) { }
 
-  loginInfos = {
-    username: '',
-    password: ''
-  };
+  login: FormGroup;
 
   ngOnInit() {
+    this.login = this.formBuilder.group({
+      username: ['', Validators.minLength(2)],
+      password: ['', Validators.required],
+    });
   }
 
-  login() {
-    this.userService.user = {
-      username: this.loginInfos.username,
-      password: this.loginInfos.password,
-    };
-    this.router.navigate(['']);
+  loginForm(data) {
+    if (data.status === 'INVALID') {
+      return;
+    }
+    this.userService.login(data.value.username, data.value.password).then((success) => {
+      this.router.navigate(['']);
+    }, (err) => {
+      this.snackBar.open('Mot de passe ou username incorrect', 'OK', {
+        verticalPosition: 'top',
+        horizontalPosition: 'center'
+      });
+    });
   }
 }
