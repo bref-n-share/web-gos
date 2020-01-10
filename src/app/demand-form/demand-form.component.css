@@ -1,0 +1,8 @@
+form {
+  height: 100%;
+  width: 75%;
+}
+
+form textarea {
+  height: 15vh;
+}
