@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {DemandsService} from '../services/demands.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-demand-form',
@@ -24,7 +25,8 @@ export class DemandFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private demandsService: DemandsService
+    private demandsService: DemandsService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -41,6 +43,7 @@ export class DemandFormComponent implements OnInit {
     const payload = this.createDemand.getRawValue();
     this.demandsService.createRequest(payload).subscribe((res) => {
       console.log('res', res);
+      this.router.navigate(['/demands']);
     }, error => {
       console.error('error', error);
     });
