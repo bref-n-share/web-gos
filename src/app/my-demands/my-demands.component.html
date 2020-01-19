@@ -7,8 +7,11 @@
         <app-filter></app-filter>
       </mat-card>
     </div>
-    <div fxFlex="66" fxFlex.lt-md="100" class="full-width">
+    <div *ngIf="!loading" fxFlex="66" fxFlex.lt-md="100" class="full-width">
       <app-demand *ngFor="let demand of demands" [demand]="demand"></app-demand>
+    </div>
+    <div *ngIf="loading" fxFlex="66" fxFlex.lt-md="100" class="full-width" fxLayoutAlign="center center">
+      <mat-spinner></mat-spinner>
     </div>
   </div>
 </main>

@@ -24,6 +24,7 @@ const routes: Routes = [
   { path: 'demands', component: MyDemandsComponent, canActivate: [AuthGuard] },
   { path: 'account-already-created', component: AccountAlreadyCreatedComponent },
   { path: 'demand-form', component: DemandFormComponent, canActivate: [AuthGuard] },
+  { path: 'demand-form/:requestId', component: DemandFormComponent, canActivate: [AuthGuard] },
   // otherwise redirect to home
   { path: '**', redirectTo: '' }
 ];

@@ -13,7 +13,7 @@
       <button mat-icon-button aria-label="Icon to notify users on gos messaging" fxLayoutAlign="center center"><img src="/assets/img/icons/conversation.png" alt="logo gos"/></button>
     </div>
     <div fxLayout="row" fxLayoutAlign="center center">
-      <button mat-icon-button aria-label="Example icon-button with a heart icon">
+      <button (click)="editDemand(demand)" [routerLink]="'/demand-form?request=' + demand.id" mat-icon-button aria-label="Example icon-button with a heart icon">
         <mat-icon>edit</mat-icon>
       </button>
     </div>

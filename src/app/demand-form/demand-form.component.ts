@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {DemandsService} from '../services/demands.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {UserService} from '../services/user.service';
 
 @Component({
   selector: 'app-demand-form',
@@ -26,7 +27,9 @@ export class DemandFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private demandsService: DemandsService,
-    private router: Router
+    private router: Router,
+    private userService: UserService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -35,7 +38,10 @@ export class DemandFormComponent implements OnInit {
       description: ['', Validators.required],
       requestedQuantity: ['', Validators.required],
       category: ['', Validators.required],
-      site: ['d177e66c-c271-42c6-b7d4-427b6b35abee']
+      site: [this.userService.user.structure.id]
+    });
+    this.route.paramMap.subscribe(params => {
+      console.log('request id', params.get('requestId'));
     });
   }
 

@@ -1,6 +1,7 @@
 import {Category} from './Category';
 
 export interface Demand {
+  id: string;
   title: string;
   author?: string;
   img?: string;

@@ -24,4 +24,8 @@ export class DemandsService {
   getRequests() {
     return this.http.get(`${environment.apiUrl}/post/request`).pipe(map((demands: Array<any>) => this.allDemands = demands));
   }
+
+  editRequest(payload, requestId) {
+    return this.http.patch(`${environment.apiUrl}/post/request/${requestId}`, payload);
+  }
 }

@@ -1,4 +1,9 @@
-<section class="example-section" *ngFor="let cat of categories">
-  <mat-checkbox (change)="modelChanged()" class="example-margin" [(ngModel)]="modelsFilter[cat.id]">{{cat.title}}</mat-checkbox>
-</section>
-
+<div *ngIf="loading" fxLayoutAlign="center center">
+  <mat-spinner [diameter]="50"></mat-spinner>
+</div>
+<div *ngIf="!loading">
+  <section class="example-section" *ngFor="let cat of categories">
+    <mat-checkbox (change)="modelChanged()" class="example-margin"
+                  [(ngModel)]="modelsFilter[cat.id]">{{cat.title}}</mat-checkbox>
+  </section>
+</div>

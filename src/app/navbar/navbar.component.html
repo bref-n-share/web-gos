@@ -13,7 +13,7 @@
     <div fxFlex="33" fxLayoutAlign="end center">
       <a *ngIf="!getUser()" routerLink="/login">Login</a>
       <div *ngIf="getUser()" fxLayout="row" fxLayoutAlign="space-evenly center" class="logged-options">
-        <a>{{getUser().username}}</a>
+        <a>{{getUser().firstName}}</a>
         <a routerLink="/user" fxLayoutAlign="center center"><mat-icon>account_circle</mat-icon></a>
         <a fxLayoutAlign="center center" (click)="logout()"><mat-icon>exit_to_app</mat-icon></a>
       </div>

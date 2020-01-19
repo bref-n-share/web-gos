@@ -16,16 +16,20 @@ export class FiltersComponent implements OnInit {
   ) {
   }
 
+  loading = false;
+
   modelsFilter = {};
 
   categories: Array<Category> = [];
 
   ngOnInit() {
+    this.loading = true;
     this.categoriesService.getCategories().subscribe((categories: Array<Category>) => {
       this.categories = categories;
       categories.forEach(c => {
         this.modelsFilter[c.id] = false;
       });
+      this.loading = false;
     });
   }
 
