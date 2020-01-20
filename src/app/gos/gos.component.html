@@ -11,7 +11,7 @@
         <app-search-bar (searchEvent)="onSearch($event)"></app-search-bar>
       </mat-card>
     </div>
-    <div fxFlex="66" fxFlex.lt-md="100" *ngIf="!loading">
+    <div fxFlex="66" fxFlex.lt-md="100" *ngIf="!loading" class="messages-container">
       <app-message (give)="onGive($event)" *ngFor="let demand of demands" [demand]="demand"></app-message>
     </div>
     <div fxFlex="66" fxLayoutAlign="center center" fxFlex.lt-md="100" *ngIf="loading">
