@@ -20,9 +20,21 @@ main {
   main {
     margin-bottom: 6%;
   }
+
+  app-search-bar.small {
+    display: flex !important;
+  }
 }
 
-.filter-card {
+app-search-bar.small {
+  display: none;
+}
+
+app-search-bar {
+  width: 100%;
+}
+
+.filter-card-container {
   position: fixed;
   left: 0;
   top: 20%;

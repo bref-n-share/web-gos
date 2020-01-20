@@ -24,4 +24,13 @@ export class MyDemandsComponent implements OnInit {
     });
   }
 
+  onSearch(event: string) {
+    const demands = this.demandsService.demandsBS.getValue();
+    if (event.length > 0) {
+      this.demands = this.demands.filter(d => d.title.includes(event));
+    } else {
+      this.demands = demands;
+    }
+  }
+
 }
