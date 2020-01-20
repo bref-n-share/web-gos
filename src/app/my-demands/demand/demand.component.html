@@ -8,9 +8,10 @@
   <mat-card-actions fxFlex="25" fxLayout="row" fxLayoutAlign="space-between center" class="full-width">
     <div fxLayout="row" fxLayoutAlign="space-evenly center">
       <button mat-icon-button aria-label="Icon to notify users in mobile app" fxLayoutAlign="center center"><img src="/assets/img/icons/smartphone.png" alt="logo smartphone"/></button>
-      <button mat-icon-button aria-label="Icon to notify users on twitter" fxLayoutAlign="center center"><img src="/assets/img/icons/twitter.png" alt="logo twitter"/></button>
-      <button mat-icon-button aria-label="Icon to notify users on facebook" fxLayoutAlign="center center"><img src="/assets/img/icons/facebook.png" alt="logo facebook"/></button>
-      <button mat-icon-button aria-label="Icon to notify users on gos messaging" fxLayoutAlign="center center"><img src="/assets/img/icons/conversation.png" alt="logo gos"/></button>
+      <button *ngIf="!buttonsLoading.twitter" (click)="publish('twitter', $event)" mat-icon-button aria-label="Icon to notify users on twitter" fxLayoutAlign="center center"><img src="/assets/img/icons/twitter.png" alt="logo twitter"/></button>
+      <button *ngIf="!buttonsLoading.facebook" (click)="publish('facebook', $event)" mat-icon-button aria-label="Icon to notify users on facebook" fxLayoutAlign="center center"><img src="/assets/img/icons/facebook.png" alt="logo facebook"/></button>
+      <button *ngIf="!buttonsLoading.gos" (click)="publish('gos', $event)" mat-icon-button aria-label="Icon to notify users on gos messaging" fxLayoutAlign="center center"><img src="/assets/img/icons/conversation.png" alt="logo gos"/></button>
+      <mat-spinner [diameter]="24" *ngIf="isLoading()"></mat-spinner>
     </div>
     <div fxLayout="row" fxLayoutAlign="center center">
       <button (click)="editDemand(demand)" [routerLink]="'/demand-form?request=' + demand.id" mat-icon-button aria-label="Example icon-button with a heart icon">
