@@ -1,4 +1,5 @@
 import {Category} from './Category';
+import {Site} from './Site';
 
 export interface Demand {
   id: string;
@@ -11,6 +12,6 @@ export interface Demand {
   requestedQuantity: number;
   currentQuantity: number;
   comments?: Comment[];
-  site?: object;
+  site?: Site;
   channel?: Array<object>;
 }
