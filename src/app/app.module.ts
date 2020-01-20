@@ -37,6 +37,7 @@ import { DemandComponent } from './my-demands/demand/demand.component';
 import { AccountAlreadyCreatedComponent } from './signup/account-already-created/account-already-created.component';
 import {JwtInterceptor} from "./helpers/jwt.interceptor";
 import { DemandFormComponent } from './demand-form/demand-form.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
 
 
 @NgModule({
@@ -68,6 +69,7 @@ import { DemandFormComponent } from './demand-form/demand-form.component';
     DemandComponent,
     AccountAlreadyCreatedComponent,
     DemandFormComponent,
+    SearchBarComponent,
   ],
   imports: [
     FlexLayoutModule,
