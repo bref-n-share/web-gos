@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 // @ts-ignore
 import demandsMock from '../../assets/mock/demands.json';
 import {Demand} from '../models/Demand';
 import {DemandsService} from '../services/demands.service';
+import {PostService} from '../services/post.service';
+import {BeingDonatedService} from '../services/being-donated.service';
 
 @Component({
   selector: 'app-gos',
@@ -13,31 +15,39 @@ export class GosComponent implements OnInit {
 
   demands: Demand[];
   filterModel = {};
+  loading = true;
 
   constructor(
-    private demandsService: DemandsService
+    private demandsService: DemandsService,
+    private postService: PostService,
+    private beingDonatedService: BeingDonatedService
   ) {
-    this.demandsService.allDemands = demandsMock;
   }
 
   ngOnInit() {
     this.demandsService.demandsBS.subscribe((demands) => {
       this.demands = demands;
-      if (Object.keys(this.filterModel).length === 0) {
-        this.initFilters();
-      }
     });
-    this.demandsService.demandsBS.next(demandsMock);
-  }
-
-  initFilters() {
-    this.demands.forEach(value => {
-      value.categories.forEach(cat => {
-        if (!this.filterModel[cat]) {
-          this.filterModel[cat] = false;
-        }
-      });
+    this.postService.getPosts().subscribe((posts: Demand[]) => {
+      this.demandsService.demandsBS.next(posts);
+      this.loading = false;
     });
   }
 
+  onGive(demand: Demand) {
+    this.beingDonatedService.beingDonatedBS.next({requestId: demand.id, loading: true});
+    this.demandsService.donate(demand.id).subscribe(result => {
+      demand.currentQuantity = demand.currentQuantity + 1;
+      this.beingDonatedService.beingDonatedBS.next({requestId: demand.id, loading: false});
+    });
+  }
+
+  onSearch(event: string) {
+    const demands = this.demandsService.demandsBS.getValue();
+    if (event.length > 0) {
+      this.demands = this.demands.filter(d => d.title.includes(event));
+    } else {
+      this.demands = demands;
+    }
+  }
 }

@@ -1,7 +1,9 @@
-main {
-  height: calc(100vh - 64px);
-}
+
 
 mat-horizontal-stepper{
   background-color: #fafafa;
+}
+
+::ng-deep .created .mat-horizontal-stepper-header {
+  pointer-events: none !important;
 }

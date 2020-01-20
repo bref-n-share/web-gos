@@ -1,13 +1,15 @@
-<div fxLayout="column" fxLayoutAlign="center center" class="center-align">
+<form fxLayout="column" fxLayoutAlign="center center" class="center-align"
+      [formGroup]="joinAsso" (ngSubmit)="validate(joinAsso)">
   <span>Je suis membre d'une association et je souhaite la rejoindre dans Bref-N-Share</span>
-  <mat-form-field>
-    <mat-label>Je souhaite rejoindre l'association</mat-label>
-    <mat-select [(ngModel)]="memberModel">
-      <mat-option *ngFor="let a of associations" [value]="a">
+  <mat-form-field *ngIf="site">
+    <mat-label>Je souhaite rejoindre le site</mat-label>
+    <mat-select formControlName="siteForm">
+      <mat-option *ngFor="let a of site" [value]="a">
         {{a.name}}
       </mat-option>
     </mat-select>
   </mat-form-field>
 
-  <button mat-button (click)="validate()">Valider</button>
-</div>
+  <button *ngIf="!isLoading()" mat-button type="submit">Valider</button>
+  <mat-spinner *ngIf="isLoading()" diameter="36"></mat-spinner>
+</form>

@@ -1,19 +1,19 @@
 <main fxLayoutAlign="center center">
-  <mat-horizontal-stepper labelPosition="bottom" fxFlex="75" fxFlex.lt-md="100" [linear]="false" #stepper>
-    <mat-step [stepControl]="signup">
+  <mat-horizontal-stepper [ngClass]="[accountCreated ? 'created': '']" labelPosition="bottom" fxFlex="75" fxFlex.lt-md="100" [linear]="true" #stepper>
+    <mat-step [stepControl]="signup" >
       <form [formGroup]="signup" fxLayout="column" fxLayoutAlign="center center">
         <ng-template matStepLabel>Inscription</ng-template>
         <mat-form-field>
           <mat-label>Nom</mat-label>
-          <input matInput formControlName="last_name" required>
+          <input matInput formControlName="lastname" required>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Prénom</mat-label>
-          <input matInput formControlName="first_name" required>
+          <input matInput formControlName="firstname" required>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Adresse mail</mat-label>
-          <input matInput type="email" formControlName="email" required>
+          <input matInput type="text" formControlName="email" required>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Mot de passe</mat-label>

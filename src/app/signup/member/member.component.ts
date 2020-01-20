@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {BecomeMember} from '../../models/commands/signup';
 import {SignupCommandsService} from '../../services/signup-commands.service';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AccountApiService} from '../../services/account-api.service';
+import {Structure} from '../../models/Structure';
+import {StructureService} from '../../services/structure.service';
+import {isNull} from 'util';
 
 @Component({
   selector: 'app-member',
@@ -10,31 +15,33 @@ import {SignupCommandsService} from '../../services/signup-commands.service';
 export class MemberComponent implements OnInit {
 
   constructor(
-    private commandsService: SignupCommandsService
+    private commandsService: SignupCommandsService,
+    private formBuilder: FormBuilder,
+    private accountApiService: AccountApiService,
+    private structureService: StructureService
   ) { }
 
-  memberModel: object = null;
+  joinAsso: FormGroup;
+  site: Structure[] = [];
 
-  associations = [
-    {
-      id: 1,
-      name: 'Emmaus'
-    },
-    {
-      id: 2,
-      name: 'Make A Wish'
-    },
-    {
-      id: 3,
-      name: 'Autre truc'
-    }
-  ];
-
-  ngOnInit() {
+  isLoading(): boolean {
+    return this.accountApiService.loading;
   }
 
-  validate() {
-    const action: BecomeMember = {association: this.memberModel};
+  ngOnInit() {
+    this.joinAsso = this.formBuilder.group({
+      siteForm: ['', Validators.required],
+    });
+    this.structureService.getStructures().subscribe((result: Structure[]) => {
+        this.site = result.filter(r => r.type === 'site');
+    });
+  }
+
+  validate(data) {
+    if (data.status === 'INVALID') {
+      return;
+    }
+    const action: BecomeMember = {membership: data.value.siteForm};
     this.commandsService.commandController.next(action);
   }
 

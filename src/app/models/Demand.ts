@@ -1,10 +1,16 @@
+import {Category} from './Category';
+
 export interface Demand {
-  title: string,
-  author: string;
-  img: string;
+  id: string;
+  title: string;
+  author?: string;
+  type?: string;
+  img?: string;
   description: string;
-  categories: string[];
-  qtyAsked: number;
-  qtyFetched: number;
-  comments: Comment[];
+  category?: Category;
+  requestedQuantity: number;
+  currentQuantity: number;
+  comments?: Comment[];
+  site?: object;
+  channel?: Array<object>;
 }

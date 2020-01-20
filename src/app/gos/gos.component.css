@@ -1,5 +1,5 @@
 @media screen and (min-width: 960px) {
-  app-filters-small {
+  app-filters-small, .small-searchbar-container {
     display: none;
   }
 }
@@ -8,6 +8,11 @@
   .filter-big-container {
     display: none !important;
   }
+}
+
+.messages-container {
+  width: 100%;
+  padding: 5%;
 }
 
 app-message {

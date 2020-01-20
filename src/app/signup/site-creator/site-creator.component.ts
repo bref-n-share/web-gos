@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {MapsService} from '../../services/maps.service';
 import {BecomeMember, CreateSite} from '../../models/commands/signup';
 import {SignupCommandsService} from '../../services/signup-commands.service';
+import {StructureService} from '../../services/structure.service';
+import {Structure} from '../../models/Structure';
+import {AccountApiService} from '../../services/account-api.service';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-site-creator',
@@ -9,31 +13,22 @@ import {SignupCommandsService} from '../../services/signup-commands.service';
   styleUrls: ['./site-creator.component.css']
 })
 export class SiteCreatorComponent implements OnInit {
+  creaSite: FormGroup;
 
   constructor(
     private mapsService: MapsService,
-    private commandsService: SignupCommandsService
+    private commandsService: SignupCommandsService,
+    private structureService: StructureService,
+    private accountApiService: AccountApiService,
+    private formBuilder: FormBuilder,
   ) { }
 
-  associations = [
-    {
-      id: 1,
-      name: 'Emmaus'
-    },
-    {
-      id: 2,
-      name: 'Make A Wish'
-    },
-    {
-      id: 3,
-      name: 'Autre truc'
-    }
-  ];
+  organizations: Structure[] = [];
 
   siteCreatorModel = {
     name: '',
     address: '',
-    association: null,
+    organization: null,
     address_components: []
   };
 
@@ -44,13 +39,31 @@ export class SiteCreatorComponent implements OnInit {
     zoom: 4
   };
 
+  cp = null;
+
   ngOnInit() {
+    this.creaSite = this.formBuilder.group({
+      name: ['', Validators.minLength(2)],
+      address: ['', Validators.required],
+      organization: ['', Validators.required],
+    });
+
+    this.structureService.getStructures().subscribe((structures) => {
+      this.organizations = structures.filter((s) => s.type === 'organization');
+    });
+  }
+
+  isLoading(): boolean {
+    return this.accountApiService.loading;
   }
 
   pinpoint() {
-    this.mapsService.findLocation(this.siteCreatorModel.address).then(res => {
+    this.mapsService.findLocation(this.creaSite.value.address).then(res => {
       this.siteCreatorModel.address_components = res['address_components'];
-      this.siteCreatorModel.address = res['formatted_address'];
+      this.cp = res['address_components'].find(cmp => {
+        return cmp.types.indexOf('postal_code') > -1;
+      });
+      this.creaSite.controls.address.setValue(res['formatted_address']);
       this.mapData.lat = res['lat'];
       this.mapData.lng = res['lng'];
       this.mapData.zoom = 17;
@@ -62,7 +75,13 @@ export class SiteCreatorComponent implements OnInit {
     });
   }
 
-  validate() {
+  validate(data) {
+    if (!this.cp || data.status === 'INVALID') {
+      return;
+    }
+    this.siteCreatorModel.name = data.value.name;
+    this.siteCreatorModel.address = data.value.address;
+    this.siteCreatorModel.organization = data.value.organization;
     const site = {...this.siteCreatorModel};
     site['lat'] = this.marker.lat;
     site['lng'] = this.marker.lng;

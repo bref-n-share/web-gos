@@ -1,14 +1,25 @@
 <main>
-  <app-filters-small [modelFilter]="filterModel"></app-filters-small>
+  <app-filters-small></app-filters-small>
+  <app-search-bar class="small" (searchEvent)="onSearch($event)"></app-search-bar>
   <div class="main-container" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center center">
     <div fxFlex="33" fxFlex.lt-md="0" class="filter-big-container" fxLayoutAlign="center start">
-      <mat-card fxLayout="column" fxLayoutAlign="start center" class="filter-card">
-        <h3>Filtres</h3>
-        <app-filter-big [modelsFilter]="filterModel"></app-filter-big>
-      </mat-card>
+      <div class="filter-card-container">
+        <mat-card fxLayout="column" fxLayoutAlign="start center">
+          <h3>Filtres</h3>
+          <app-filter></app-filter>
+        </mat-card>
+        <app-search-bar (searchEvent)="onSearch($event)"></app-search-bar>
+      </div>
     </div>
-    <div fxFlex="66" fxFlex.lt-md="100" class="full-width">
+    <div *ngIf="!loading" fxFlex="66" fxFlex.lt-md="100" class="full-width">
       <app-demand *ngFor="let demand of demands" [demand]="demand"></app-demand>
+    </div>
+    <div *ngIf="loading" fxFlex="66" fxFlex.lt-md="100" class="full-width" fxLayoutAlign="center center">
+      <mat-spinner></mat-spinner>
     </div>
   </div>
 </main>
+
+<button class="create-demand" routerLink="/demand-form" mat-fab aria-label="Create a demand">
+  <mat-icon>edit</mat-icon>
+</button>

@@ -1,14 +1,21 @@
 <div id="main">
   <app-filters-small [modelFilter]="filterModel"></app-filters-small>
+  <div class="small-searchbar-container">
+    <app-search-bar (searchEvent)="onSearch($event)"></app-search-bar>
+  </div>
   <div class="main-container" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center center">
     <div fxFlex="33" fxFlex.lt-md="0" class="filter-big-container" fxLayoutAlign="center start">
       <mat-card fxLayout="column" fxLayoutAlign="start center" class="filter-card">
         <h3>Filtres</h3>
-        <app-filter-big [modelsFilter]="filterModel"></app-filter-big>
+        <app-filter></app-filter>
+        <app-search-bar (searchEvent)="onSearch($event)"></app-search-bar>
       </mat-card>
     </div>
-    <div fxFlex="66" fxFlex.lt-md="100">
-      <app-message *ngFor="let demand of demands" [demand]="demand"></app-message>
+    <div fxFlex="66" fxFlex.lt-md="100" *ngIf="!loading" class="messages-container">
+      <app-message (give)="onGive($event)" *ngFor="let demand of demands" [demand]="demand"></app-message>
+    </div>
+    <div fxFlex="66" fxLayoutAlign="center center" fxFlex.lt-md="100" *ngIf="loading">
+      <mat-spinner [diameter]="50"></mat-spinner>
     </div>
   </div>
 </div>

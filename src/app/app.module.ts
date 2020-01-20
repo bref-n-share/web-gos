@@ -14,12 +14,12 @@ import { MessageComponent } from './gos/message/message.component';
 import { FiltersComponent } from './gos/filters/filters.component';
 import { CommentComponent } from './gos/message/comment/comment.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { OrgaComponent } from './orga/orga.component';
+import { SiteComponent } from './site/site.component';
 import {AgmCoreModule, GoogleMapsAPIWrapper} from '@agm/core';
-import { OrgaDetailsComponent } from './orga/orga-details/orga-details.component';
+import { SiteDetailsComponent } from './site/site-details/site-details.component';
 import { NotifyComponent } from './notify/notify.component';
 import { FacebookComponent } from './notify/facebook/facebook.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { LoginComponent } from './login/login.component';
@@ -34,8 +34,10 @@ import { DialogDeleteComponent } from './user/dialog-delete/dialog-delete.compon
 import { DialogModifyComponent } from './user/dialog-modify/dialog-modify.component';
 import { MyDemandsComponent } from './my-demands/my-demands.component';
 import { DemandComponent } from './my-demands/demand/demand.component';
-import {CreateAccountComponent} from './create-account/create-account.component';
-
+import { AccountAlreadyCreatedComponent } from './signup/account-already-created/account-already-created.component';
+import {JwtInterceptor} from "./helpers/jwt.interceptor";
+import { DemandFormComponent } from './demand-form/demand-form.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
 
 
 @NgModule({
@@ -49,8 +51,8 @@ import {CreateAccountComponent} from './create-account/create-account.component'
     MessageComponent,
     FiltersComponent,
     CommentComponent,
-    OrgaComponent,
-    OrgaDetailsComponent,
+    SiteComponent,
+    SiteDetailsComponent,
     NotifyComponent,
     FacebookComponent,
     LoginComponent,
@@ -65,7 +67,9 @@ import {CreateAccountComponent} from './create-account/create-account.component'
     DialogModifyComponent,
     MyDemandsComponent,
     DemandComponent,
-    CreateAccountComponent
+    AccountAlreadyCreatedComponent,
+    DemandFormComponent,
+    SearchBarComponent,
   ],
   imports: [
     FlexLayoutModule,
@@ -81,9 +85,11 @@ import {CreateAccountComponent} from './create-account/create-account.component'
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     ReactiveFormsModule
   ],
-  providers: [GoogleMapsAPIWrapper],
+  providers: [GoogleMapsAPIWrapper,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+  ],
   entryComponents: [
-    OrgaDetailsComponent,
+    SiteDetailsComponent,
     ConfirmAddressComponent,
     DialogDeleteComponent,
     DialogModifyComponent
