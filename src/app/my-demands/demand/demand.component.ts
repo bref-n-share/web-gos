@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Demand} from '../../models/Demand';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-demand',
@@ -8,11 +9,18 @@ import {Demand} from '../../models/Demand';
 })
 export class DemandComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   @Input() demand: Demand;
 
   ngOnInit() {
+  }
+
+  editDemand(demand) {
+    const url = '/demand-form/' + demand.id;
+    this.router.navigate([url]);
   }
 
 }

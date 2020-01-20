@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from '../models/User';
 import {MatDialog} from '@angular/material';
 import {DialogDeleteComponent} from './dialog-delete/dialog-delete.component';
