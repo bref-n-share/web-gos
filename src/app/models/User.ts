@@ -1,10 +1,12 @@
+import {Structure} from './Structure';
+
 export interface User {
   id?: number;
   username: string;
-  firstname?: string;
-  lastname?: string;
+  firstName?: string;
+  lastName?: string;
   password?: string;
   status?: string;
-  structure?: string;
+  structure?: Structure;
   role?: string;
 }
