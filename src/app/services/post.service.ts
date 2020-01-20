@@ -16,6 +16,6 @@ export class PostService {
   ) { }
 
   getPosts() {
-    return this.http.get(`${environment.apiUrl}/post?level=full`).pipe(map((posts: Demand[]) => this.demandsService.allDemands = posts));
+    return this.http.get(`${environment.apiUrl}/post?level=full&channels=gos`).pipe(map((posts: Demand[]) => this.demandsService.allDemands = posts));
   }
 }
