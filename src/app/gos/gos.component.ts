@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 // @ts-ignore
 import demandsMock from '../../assets/mock/demands.json';
 import {Demand} from '../models/Demand';
@@ -32,11 +32,9 @@ export class GosComponent implements OnInit {
 
   initFilters() {
     this.demands.forEach(value => {
-      value.categories.forEach(cat => {
-        if (!this.filterModel[cat]) {
-          this.filterModel[cat] = false;
-        }
-      });
+      if (!this.filterModel[value.category.id]) {
+        this.filterModel[value.category.id] = false;
+      }
     });
   }
 

@@ -21,6 +21,10 @@ export class UserService {
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
+  public resetUser() {
+    this.currentUserSubject.next(null);
+  }
+
   public get user(): User {
     return this.currentUserSubject.value;
   }
@@ -51,8 +55,4 @@ export class UserService {
     this.currentUserSubject.next(null);
     this.router.navigate(['/login']);
   }
-
-  /*getUser() {
-    return localStorage.getItem('currentUser');
-  }*/
 }

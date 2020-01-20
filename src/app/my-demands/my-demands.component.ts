@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Demand} from '../models/Demand';
 import {DemandsService} from '../services/demands.service';
-import demandsMock from '../../assets/mock/demands.json';
 
 @Component({
   selector: 'app-my-demands',
@@ -10,30 +9,18 @@ import demandsMock from '../../assets/mock/demands.json';
 })
 export class MyDemandsComponent implements OnInit {
   demands: Demand[];
-  filterModel = {};
+  loading = true;
   constructor(
     private demandsService: DemandsService
-  ) {
-    this.demandsService.allDemands = demandsMock;
-  }
+  ) {}
 
   ngOnInit() {
     this.demandsService.demandsBS.subscribe((demands) => {
       this.demands = demands;
-      if (Object.keys(this.filterModel).length === 0) {
-        this.initFilters();
-      }
     });
-    this.demandsService.demandsBS.next(demandsMock);
-  }
-
-  initFilters() {
-    this.demands.forEach(value => {
-      value.categories.forEach(cat => {
-        if (!this.filterModel[cat]) {
-          this.filterModel[cat] = false;
-        }
-      });
+    this.demandsService.getRequests().subscribe((demands: Array<Demand>) => {
+      this.demandsService.demandsBS.next(demands);
+      this.loading = false;
     });
   }
 

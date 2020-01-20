@@ -1,5 +1,4 @@
 main {
-  height: calc(100vh - 64px);
   overflow-y: auto;
 }
 
@@ -17,6 +16,10 @@ main {
   app-demand {
     width: 100%;
   }
+
+  main {
+    margin-bottom: 6%;
+  }
 }
 
 .filter-card {
@@ -29,3 +32,10 @@ main {
 app-demand {
   padding: 5%;
 }
+
+.create-demand {
+  position: absolute;
+  bottom: 2.5%;
+  right: 2.5%;
+}
+

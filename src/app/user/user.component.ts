@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from '../models/User';
 import {MatDialog} from '@angular/material';
 import {DialogDeleteComponent} from './dialog-delete/dialog-delete.component';
 import {DialogModifyComponent} from './dialog-modify/dialog-modify.component';
 import {Router} from '@angular/router';
+import {UserService} from '../services/user.service';
 
 
 @Component({
@@ -13,18 +14,21 @@ import {Router} from '@angular/router';
 })
 export class UserComponent implements OnInit {
 
-  constructor(public dialog: MatDialog,
-              private rooter: Router) {
+  constructor(
+    public dialog: MatDialog,
+    private rooter: Router,
+    private userService: UserService
+  ) {
   }
 
   user: User = {
     id: 1,
     username: 'bastien.plaza42@gmail.com',
-    firstname: 'Bastien',
+    firstName: 'Bastien',
     lastname: 'Plaza',
     password: '',
     status: 'Accepted',
-    structure: 'Emmaus Lyon',
+    // structure: 'Emmaus Lyon',
     role: 'Admin'
   };
 
@@ -38,9 +42,10 @@ export class UserComponent implements OnInit {
       data: {...this.user}
     });
     dialogRefDelete.afterClosed().subscribe(result => {
-        if (result) {
-          this.rooter.navigate(['/']);
-        }
+      if (result) {
+        this.userService.resetUser();
+        this.rooter.navigate(['/']);
+      }
     });
   }
 
