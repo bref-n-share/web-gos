@@ -5,7 +5,7 @@
     <mat-card class="example-card">
       <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>{{ user.firstName + " " + user.lastname }}</mat-card-title>
+        <mat-card-title>{{ user.firstName + " " + user.lastName }}</mat-card-title>
         <mat-card-subtitle>{{ user.username }}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
@@ -14,13 +14,13 @@
           Il est possible de modifier votre nom et prenom.
         </p>
         <p>
-          <b>Nom : </b> {{ user.lastname }}
+          <b>Nom : </b> {{ user.lastName }}
         </p>
         <p>
           <b>Prenom : </b> {{ user.firstName }}
         </p>
-        <p>
-          <b>Structure : </b> {{ user.structure }}
+        <p *ngIf="user.structure">
+          <b>Structure : </b> {{ user.structure.name }}
         </p>
         <p>
           <b>Status : </b> {{ user.status }}

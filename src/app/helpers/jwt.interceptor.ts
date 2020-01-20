@@ -10,7 +10,7 @@ export class JwtInterceptor implements HttpInterceptor {
   whiteList = [
     `${environment.apiUrl}/security/authenticate`,
     `${environment.apiUrl}/user/member`,
-    `${environment.apiUrl}/structure`
+    `${environment.apiUrl}/structure`,
   ];
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -18,7 +18,7 @@ export class JwtInterceptor implements HttpInterceptor {
     if (localStorage.getItem('token') && !this.whiteList.includes(request.url)) {
       request = request.clone({
         setHeaders: {
-          'X-AUTH-TOKEN': `${localStorage.getItem('token')}`
+          'X-AUTH-TOKEN': `${localStorage.getItem('token')}`,
         }
       });
     }

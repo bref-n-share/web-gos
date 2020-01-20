@@ -4,8 +4,9 @@ import {MatDialog} from '@angular/material';
 import {DialogDeleteComponent} from './dialog-delete/dialog-delete.component';
 import {DialogModifyComponent} from './dialog-modify/dialog-modify.component';
 import {Router} from '@angular/router';
+import {AccountApiService} from '../services/account-api.service';
 import {UserService} from '../services/user.service';
-
+import {Structure} from "../models/Structure";
 
 @Component({
   selector: 'app-user',
@@ -14,26 +15,28 @@ import {UserService} from '../services/user.service';
 })
 export class UserComponent implements OnInit {
 
-  constructor(
-    public dialog: MatDialog,
-    private rooter: Router,
-    private userService: UserService
-  ) {
-  }
-
+  struct: Structure;
   user: User = {
-    id: 1,
-    username: 'bastien.plaza42@gmail.com',
-    firstName: 'Bastien',
-    lastname: 'Plaza',
+    id: 0,
+    username: '',
+    firstName: '',
+    lastName: '',
     password: '',
-    status: 'Accepted',
-    // structure: 'Emmaus Lyon',
-    role: 'Admin'
+    status: '',
+    role: '',
+    structure: this.struct,
   };
 
+  constructor(public dialog: MatDialog,
+              private rooter: Router,
+              private accountApiService: AccountApiService,
+              private userService: UserService) {
+  }
 
   ngOnInit() {
+    this.accountApiService.getUserById(this.userService.user.id).subscribe((user) => {
+      this.user = user;
+    });
   }
 
   deleteAccount(): void {
@@ -42,10 +45,11 @@ export class UserComponent implements OnInit {
       data: {...this.user}
     });
     dialogRefDelete.afterClosed().subscribe(result => {
-      if (result) {
-        this.userService.resetUser();
-        this.rooter.navigate(['/']);
-      }
+        if (result) {
+          this.accountApiService.deleteUSer(this.user.id).subscribe((ret) => {
+            this.userService.logout();
+          });
+        }
     });
   }
 
@@ -54,9 +58,11 @@ export class UserComponent implements OnInit {
       width: '250px',
       data: {...this.user}
     });
-    dialogRefModify.afterClosed().subscribe(result => {
+    dialogRefModify.afterClosed().subscribe((result: User) => {
       if (result) {
-        this.user = result;
+        this.accountApiService.modifyUser(result).subscribe((ret) => {
+          this.user = result;
+        });
       }
     });
   }

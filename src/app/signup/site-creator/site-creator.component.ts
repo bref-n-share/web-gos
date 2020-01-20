@@ -39,6 +39,8 @@ export class SiteCreatorComponent implements OnInit {
     zoom: 4
   };
 
+  cp = null;
+
   ngOnInit() {
     this.creaSite = this.formBuilder.group({
       name: ['', Validators.minLength(2)],
@@ -58,6 +60,9 @@ export class SiteCreatorComponent implements OnInit {
   pinpoint() {
     this.mapsService.findLocation(this.creaSite.value.address).then(res => {
       this.siteCreatorModel.address_components = res['address_components'];
+      this.cp = res['address_components'].find(cmp => {
+        return cmp.types.indexOf('postal_code') > -1;
+      });
       this.creaSite.controls.address.setValue(res['formatted_address']);
       this.mapData.lat = res['lat'];
       this.mapData.lng = res['lng'];
@@ -71,7 +76,7 @@ export class SiteCreatorComponent implements OnInit {
   }
 
   validate(data) {
-    if (data.status === 'INVALID') {
+    if (!this.cp || data.status === 'INVALID') {
       return;
     }
     this.siteCreatorModel.name = data.value.name;

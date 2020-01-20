@@ -4,7 +4,7 @@ export interface User {
   id?: number;
   username: string;
   firstName?: string;
-  lastname?: string;
+  lastName?: string;
   password?: string;
   status?: string;
   structure?: Structure;
