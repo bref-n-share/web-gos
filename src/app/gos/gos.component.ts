@@ -15,6 +15,7 @@ export class GosComponent implements OnInit {
 
   demands: Demand[];
   filterModel = {};
+  loading = true;
 
   constructor(
     private demandsService: DemandsService,
@@ -29,20 +30,24 @@ export class GosComponent implements OnInit {
     });
     this.postService.getPosts().subscribe((posts: Demand[]) => {
       this.demandsService.demandsBS.next(posts);
+      this.loading = false;
     });
   }
 
   onGive(demand: Demand) {
     this.beingDonatedService.beingDonatedBS.next({requestId: demand.id, loading: true});
-    const tmpDmd = {
-      id: demand.id,
-      currentQuantity: demand.currentQuantity + 1
-    };
-    console.log('calling with', tmpDmd);
     this.demandsService.donate(demand.id).subscribe(result => {
-      console.log('res', result);
       demand.currentQuantity = demand.currentQuantity + 1;
       this.beingDonatedService.beingDonatedBS.next({requestId: demand.id, loading: false});
     });
+  }
+
+  onSearch(event: string) {
+    const demands = this.demandsService.demandsBS.getValue();
+    if (event.length > 0) {
+      this.demands = this.demands.filter(d => d.title.includes(event));
+    } else {
+      this.demands = demands;
+    }
   }
 }

@@ -1,5 +1,5 @@
 <mat-form-field>
   <mat-label>Rechercher</mat-label>
-  <input [(ngModel)]="search" type="text" matInput (input)="onInput(search)">
+  <input [(ngModel)]="search" type="text" matInput (keydown)="onInput(search)">
   <mat-icon matSuffix>search</mat-icon>
 </mat-form-field>

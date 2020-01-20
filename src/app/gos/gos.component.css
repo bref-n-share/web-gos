@@ -1,5 +1,5 @@
 @media screen and (min-width: 960px) {
-  app-filters-small {
+  app-filters-small, .small-searchbar-container {
     display: none;
   }
 }
