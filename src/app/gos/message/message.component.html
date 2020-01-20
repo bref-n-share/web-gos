@@ -1,10 +1,10 @@
 <mat-card fxLayout="column">
   <div fxFlex="40" fxLayout="row">
     <div fxLayoutAlign="center center" fxFlex="33">
-      <img src="{{demand.img}}" alt="img" />
+      <img *ngIf="demand.img" src="{{demand.img}}" alt="img" />
     </div>
     <div fxLayout="column" fxLayoutAlign="start center" fxFlex="66">
-      <h3>{{demand.author}}</h3>
+      <h3>{{demand.site.organization.name}} - {{demand.site.name}}</h3>
       <p>
         {{demand.description}}
       </p>
@@ -12,7 +12,7 @@
   </div>
   <div fxFlex="10" fxLayout="row">
     <div fxFlex="80" fxLayoutAlign="center center">
-      <mat-progress-bar mode="determinate" value="{{(demand.currentQuantity / demand.requestedQuantity) * 100}}"></mat-progress-bar>
+      <mat-progress-bar *ngIf="demand.type === 'request'" mode="determinate" value="{{(demand.currentQuantity / demand.requestedQuantity) * 100}}"></mat-progress-bar>
     </div>
     <div fxFlex="20" fxLayoutAlign="center center">
       <h4 *ngIf="demand.currentQuantity !== demand.requestedQuantity" class="center-align">{{demand.currentQuantity}} sur {{demand.requestedQuantity}}</h4>
@@ -20,7 +20,7 @@
     </div>
   </div>
   <div fxFlex="50" fxLayout="row">
-    <mat-accordion fxFlex="75">
+    <mat-accordion fxFlex="75" *ngIf="demand.comments">
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
@@ -31,13 +31,16 @@
           <app-comment [comment]="comment"></app-comment>
           <mat-divider></mat-divider>
         </div>
-
       </mat-expansion-panel>
     </mat-accordion>
-    <div fxFlex="25" fxLayoutAlign="center center">
-      <button mat-raised-button color="primary"
-              (click)="demand.currentQuantity = demand.currentQuantity + 1"
+    <div fxFlex *ngIf="!demand.comments">
+      <span>Pas de commentaires</span>
+    </div>
+    <div *ngIf="demand.type === 'request'" fxFlex="25" fxLayoutAlign="center center">
+      <button *ngIf="!loading" mat-raised-button color="primary"
+              (click)="onClickGive()"
               [disabled]="demand.currentQuantity === demand.requestedQuantity">Donner</button>
+      <mat-spinner *ngIf="loading" [diameter]="24"></mat-spinner>
     </div>
   </div>
 </mat-card>

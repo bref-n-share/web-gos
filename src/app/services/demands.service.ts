@@ -32,4 +32,8 @@ export class DemandsService {
   getRequest(requestId) {
     return this.http.get(`${environment.apiUrl}/post/request/${requestId}`);
   }
+
+  donate(requestId) {
+    return this.http.post(`${environment.apiUrl}/post/request/${requestId}`, null);
+  }
 }
