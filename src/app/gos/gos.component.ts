@@ -3,6 +3,8 @@ import {Component, OnInit} from '@angular/core';
 import demandsMock from '../../assets/mock/demands.json';
 import {Demand} from '../models/Demand';
 import {DemandsService} from '../services/demands.service';
+import {PostService} from '../services/post.service';
+import {BeingDonatedService} from '../services/being-donated.service';
 
 @Component({
   selector: 'app-gos',
@@ -15,27 +17,32 @@ export class GosComponent implements OnInit {
   filterModel = {};
 
   constructor(
-    private demandsService: DemandsService
+    private demandsService: DemandsService,
+    private postService: PostService,
+    private beingDonatedService: BeingDonatedService
   ) {
-    this.demandsService.allDemands = demandsMock;
   }
 
   ngOnInit() {
     this.demandsService.demandsBS.subscribe((demands) => {
       this.demands = demands;
-      if (Object.keys(this.filterModel).length === 0) {
-        this.initFilters();
-      }
     });
-    this.demandsService.demandsBS.next(demandsMock);
-  }
-
-  initFilters() {
-    this.demands.forEach(value => {
-      if (!this.filterModel[value.category.id]) {
-        this.filterModel[value.category.id] = false;
-      }
+    this.postService.getPosts().subscribe((posts: Demand[]) => {
+      this.demandsService.demandsBS.next(posts);
     });
   }
 
+  onGive(demand: Demand) {
+    this.beingDonatedService.beingDonatedBS.next({requestId: demand.id, loading: true});
+    const tmpDmd = {
+      id: demand.id,
+      currentQuantity: demand.currentQuantity + 1
+    };
+    console.log('calling with', tmpDmd);
+    this.demandsService.donate(demand.id).subscribe(result => {
+      console.log('res', result);
+      demand.currentQuantity = demand.currentQuantity + 1;
+      this.beingDonatedService.beingDonatedBS.next({requestId: demand.id, loading: false});
+    });
+  }
 }

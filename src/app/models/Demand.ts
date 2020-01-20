@@ -4,6 +4,7 @@ export interface Demand {
   id: string;
   title: string;
   author?: string;
+  type?: string;
   img?: string;
   description: string;
   category?: Category;
