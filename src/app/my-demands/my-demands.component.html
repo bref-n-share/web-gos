@@ -1,11 +1,15 @@
 <main>
   <app-filters-small></app-filters-small>
+  <app-search-bar class="small" (searchEvent)="onSearch($event)"></app-search-bar>
   <div class="main-container" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center center">
     <div fxFlex="33" fxFlex.lt-md="0" class="filter-big-container" fxLayoutAlign="center start">
-      <mat-card fxLayout="column" fxLayoutAlign="start center" class="filter-card">
-        <h3>Filtres</h3>
-        <app-filter></app-filter>
-      </mat-card>
+      <div class="filter-card-container">
+        <mat-card fxLayout="column" fxLayoutAlign="start center">
+          <h3>Filtres</h3>
+          <app-filter></app-filter>
+        </mat-card>
+        <app-search-bar (searchEvent)="onSearch($event)"></app-search-bar>
+      </div>
     </div>
     <div *ngIf="!loading" fxFlex="66" fxFlex.lt-md="100" class="full-width">
       <app-demand *ngFor="let demand of demands" [demand]="demand"></app-demand>
