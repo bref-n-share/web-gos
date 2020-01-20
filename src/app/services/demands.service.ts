@@ -28,4 +28,8 @@ export class DemandsService {
   editRequest(payload, requestId) {
     return this.http.patch(`${environment.apiUrl}/post/request/${requestId}`, payload);
   }
+
+  getRequest(requestId) {
+    return this.http.get(`${environment.apiUrl}/post/request/${requestId}`);
+  }
 }

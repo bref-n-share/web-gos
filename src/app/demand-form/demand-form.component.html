@@ -1,5 +1,5 @@
 <main fxLayout="column" fxLayoutAlign="center center">
-  <form [formGroup]="createDemand" (submit)="submit()" fxLayout="column" fxLayoutAlign="center center">
+  <form [formGroup]="createDemand" (submit)="submit($event)" fxLayout="column" fxLayoutAlign="center center">
     <h1>Créer une demande</h1>
     <mat-form-field class="full-width">
       <mat-label>Titre</mat-label>
@@ -19,12 +19,17 @@
       <mat-form-field fxFlex="45" class="full-width">
         <mat-label>Catégorie</mat-label>
         <mat-select formControlName="category">
-          <mat-option *ngFor="let cat of categories" [value]="cat.id" >
+          <mat-option *ngFor="let cat of categories" [value]="cat.id">
             {{cat.title}}
           </mat-option>
         </mat-select>
       </mat-form-field>
     </div>
-    <button mat-button type="submit">Valider</button>
+    <div *ngIf="!loading">
+      <button mat-button type="submit">Valider</button>
+    </div>
+    <div *ngIf="loading">
+      <mat-spinner [diameter]="50"></mat-spinner>
+    </div>
   </form>
 </main>
