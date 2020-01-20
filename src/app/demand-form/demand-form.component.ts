@@ -72,7 +72,7 @@ export class DemandFormComponent implements OnInit {
     event.preventDefault();
     this.loading = true;
     const payload = this.createDemand.getRawValue();
-    if (this.requestId) {
+    if (!this.requestId) {
       this.create(payload);
     } else {
       this.update(payload);
