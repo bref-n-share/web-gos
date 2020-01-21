@@ -92,7 +92,9 @@ export class DemandFormComponent implements OnInit {
     this.demandsService.editRequest(payload, this.requestId).subscribe(() => {
       this.loading = false;
       // this.router.navigate(['/demands']);
-      this.snackBar.open('Updated');
+      this.snackBar.open('Mis à jour', null, {
+        duration: 2000,
+      });
     }, error => {
       console.error('error', error);
       this.loading = false;
