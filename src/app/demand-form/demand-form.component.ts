@@ -20,7 +20,6 @@ export class DemandFormComponent implements OnInit {
   createDemand: FormGroup;
   loading = true;
   requestId = null;
-
   categories = [];
 
   constructor(
