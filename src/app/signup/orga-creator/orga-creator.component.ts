@@ -30,13 +30,15 @@ export class OrgaCreatorComponent implements OnInit {
     address: '',
     address_components: [],
     latitude: '',
-    longitude: ''
+    longitude: '',
+    description: ''
   };
 
   ngOnInit() {
     this.creaOrga = this.formBuilder.group({
       name: ['', Validators.minLength(2)],
       address: ['', Validators.required],
+      description: ['', Validators.required],
     });
   }
 
@@ -45,11 +47,13 @@ export class OrgaCreatorComponent implements OnInit {
   }
 
   validate(data) {
+    console.log('validate');
     if (data.status === 'INVALID') {
       return;
     }
     this.modelOrga.name = data.value.name;
     this.modelOrga.address = data.value.address;
+    this.modelOrga.description = data.value.description;
     this.mapsService.findLocation(this.modelOrga.address).then(res => {
       if (res['formatted_address'] !== this.modelOrga.address) {
         this.dialog.open(ConfirmAddressComponent, {

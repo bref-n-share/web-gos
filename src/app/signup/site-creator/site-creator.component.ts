@@ -28,6 +28,7 @@ export class SiteCreatorComponent implements OnInit {
   siteCreatorModel = {
     name: '',
     address: '',
+    description: '',
     organization: null,
     address_components: []
   };
@@ -45,6 +46,7 @@ export class SiteCreatorComponent implements OnInit {
     this.creaSite = this.formBuilder.group({
       name: ['', Validators.minLength(2)],
       address: ['', Validators.required],
+      description: ['', Validators.required],
       organization: ['', Validators.required],
     });
 
@@ -82,6 +84,7 @@ export class SiteCreatorComponent implements OnInit {
     this.siteCreatorModel.name = data.value.name;
     this.siteCreatorModel.address = data.value.address;
     this.siteCreatorModel.organization = data.value.organization;
+    this.siteCreatorModel.description = data.value.description;
     const site = {...this.siteCreatorModel};
     site['lat'] = this.marker.lat;
     site['lng'] = this.marker.lng;
