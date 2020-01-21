@@ -35,9 +35,10 @@ import { DialogModifyComponent } from './user/dialog-modify/dialog-modify.compon
 import { MyDemandsComponent } from './my-demands/my-demands.component';
 import { DemandComponent } from './my-demands/demand/demand.component';
 import { AccountAlreadyCreatedComponent } from './signup/account-already-created/account-already-created.component';
-import {JwtInterceptor} from "./helpers/jwt.interceptor";
+import {JwtInterceptor} from './helpers/jwt.interceptor';
 import { DemandFormComponent } from './demand-form/demand-form.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
+import { TwitterComponent } from './notify/twitter/twitter.component';
 
 
 @NgModule({
@@ -70,6 +71,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
     AccountAlreadyCreatedComponent,
     DemandFormComponent,
     SearchBarComponent,
+    TwitterComponent,
   ],
   imports: [
     FlexLayoutModule,

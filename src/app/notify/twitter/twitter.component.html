@@ -1,0 +1,12 @@
+<mat-card>
+  <mat-card-title>Twitter</mat-card-title>
+  <mat-card-subtitle>Twitter sur le compte Bref N Share</mat-card-subtitle>
+  <mat-card-content fxLayout="column" fxLayoutAlign="center center">
+    <mat-form-field>
+      <mat-label>Écrivez votre post</mat-label>
+      <textarea matInput [(ngModel)]="postModel"></textarea>
+    </mat-form-field>
+    <button *ngIf="!posting" mat-raised-button color="primary" (click)="createPost(postModel)">Poster</button>
+    <mat-spinner diameter="50" *ngIf="posting"></mat-spinner>
+  </mat-card-content>
+</mat-card>
