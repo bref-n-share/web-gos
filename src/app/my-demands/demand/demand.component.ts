@@ -43,7 +43,9 @@ export class DemandComponent implements OnInit {
     this.socialService.publish(channel, this.demand.id).subscribe(result => {
       console.log('result', result);
       this.buttonsLoading[channel] = false;
-      this.snackBar.open('Publié');
+      this.snackBar.open('Publié', null, {
+        duration: 2000,
+      });
     });
   }
 

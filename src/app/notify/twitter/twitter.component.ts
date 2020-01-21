@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {MatSnackBar} from '@angular/material';
 import {NotifyService} from '../../services/notify.service';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
-  selector: 'app-facebook',
-  templateUrl: './facebook.component.html',
-  styleUrls: ['./facebook.component.css']
+  selector: 'app-twitter',
+  templateUrl: './twitter.component.html',
+  styleUrls: ['./twitter.component.css']
 })
-export class FacebookComponent implements OnInit {
+export class TwitterComponent implements OnInit {
 
   constructor(
     private notifyService: NotifyService,
@@ -22,7 +22,7 @@ export class FacebookComponent implements OnInit {
 
   createPost(message) {
     this.posting = true;
-    this.notifyService.createPost('facebook', message).subscribe(() => {
+    this.notifyService.createPost('twitter', message).subscribe(() => {
       this.posting = false;
       this.postModel = '';
     });
