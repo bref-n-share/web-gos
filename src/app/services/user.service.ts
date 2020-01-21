@@ -31,7 +31,7 @@ export class UserService {
 
   login(username, password) {
     return new Promise((resolve, reject) => {
-      this.http.post<any>(`${environment.apiUrl}/security/authenticate`, {email: username, password: password})
+      this.http.post<any>(`${environment.apiUrl}/security/authenticate`, {email: username, password})
         .subscribe(token => {
             console.log(token);
             localStorage.setItem('token', token.token);

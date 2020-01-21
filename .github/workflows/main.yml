@@ -32,4 +32,4 @@ jobs:
           npm run build-prod --if-present
       - name: Deploy on App Engine
         if: success()
-        run: gcloud app deploy ./app.yaml --project ${{ secrets.GCP_PROJECT_ID }} --quiet
+        run: gcloud app deploy ./app.yaml ./dispatch.yaml --project ${{ secrets.GCP_PROJECT_ID }} --quiet

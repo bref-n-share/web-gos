@@ -20,7 +20,7 @@ export class AccountApiService {
 
   createUser(user: object) {
     this.loading = true;
-    return this.http.post<User>(`${environment.apiUrl}/user/member/`, user).pipe(map(() => this.loading = false));
+    return this.http.post<User>(`${environment.apiUrl}/user/member`, user).pipe(map(() => this.loading = false));
   }
 
   modifyUser(user: User) {
