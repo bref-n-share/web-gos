@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {MatSnackBar} from '@angular/material';
 import {map} from 'rxjs/operators';
+import {isNull} from 'util';
 
 @Injectable({
   providedIn: 'root'
@@ -34,4 +35,14 @@ export class NotifyService {
         return error;
       }));
   }
+
+  notify(payload, postId) {
+    if (isNull(postId)) {
+      return this.http.post(`${environment.apiUrl}/notification/simple`, payload);
+    } else {
+      return this.http.post(`${environment.apiUrl}/notification/post/${postId}`, payload);
+    }
+  }
+
+
 }

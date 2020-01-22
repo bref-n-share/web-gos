@@ -39,6 +39,9 @@ import {JwtInterceptor} from './helpers/jwt.interceptor';
 import { DemandFormComponent } from './demand-form/demand-form.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { TwitterComponent } from './notify/twitter/twitter.component';
+import { MobileComponent } from './notify/mobile/mobile.component';
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material';
+import {MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_FORMATS, MomentDateAdapter} from '@angular/material-moment-adapter';
 
 
 @NgModule({
@@ -72,6 +75,7 @@ import { TwitterComponent } from './notify/twitter/twitter.component';
     DemandFormComponent,
     SearchBarComponent,
     TwitterComponent,
+    MobileComponent,
   ],
   imports: [
     FlexLayoutModule,
@@ -85,10 +89,17 @@ import { TwitterComponent } from './notify/twitter/twitter.component';
     }),
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [GoogleMapsAPIWrapper,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    {provide: MAT_DATE_LOCALE, useValue: 'fr'},
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
+    },
+    {provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS},
   ],
   entryComponents: [
     SiteDetailsComponent,
