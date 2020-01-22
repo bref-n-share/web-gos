@@ -1,0 +1,35 @@
+<mat-card>
+  <mat-card-title>Mobile</mat-card-title>
+  <mat-card-subtitle>Notifiez vos utilisateurs mobile</mat-card-subtitle>
+  <mat-card-content>
+    <form fxLayout="column"
+          fxLayoutAlign="center center"
+          [formGroup]="postForm"
+          (submit)="createPost()">
+      <mat-form-field>
+        <mat-label>Titre de la notification</mat-label>
+        <input matInput formControlName="title"/>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Écrivez votre message</mat-label>
+        <textarea matInput formControlName="message"></textarea>
+      </mat-form-field>
+      <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-evenly center" class="datetime-container">
+        <mat-form-field fxFlex="40">
+          <input formControlName="date"
+                 matInput
+                 [matDatepicker]="dp"
+                 placeholder="Date expiration">
+          <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+          <mat-datepicker #dp></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field fxFlex="40">
+          <mat-label>Heure expiration</mat-label>
+          <input type="time" name="appt" matInput formControlName="time">
+        </mat-form-field>
+      </div>
+      <button type="submit" *ngIf="!posting" mat-raised-button color="primary">Poster</button>
+      <mat-spinner diameter="50" *ngIf="posting"></mat-spinner>
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -10,4 +10,8 @@ main > div {
   main div {
     width: 75%;
   }
+
+  main {
+    height: auto;
+  }
 }

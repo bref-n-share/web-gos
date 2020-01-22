@@ -9,7 +9,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
-import {MatDialogModule} from '@angular/material';
+import {MatDatepickerModule, MatDialogModule} from '@angular/material';
 import {MatProgressSpinnerModule} from '@angular/material';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatStepperModule} from '@angular/material/stepper';
@@ -17,7 +17,6 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
-
 
 
 const modules = [
@@ -38,10 +37,12 @@ const modules = [
   MatTabsModule,
   MatSelectModule,
   MatSidenavModule,
-  MatListModule
+  MatListModule,
+  MatDatepickerModule
 ];
 
 
+// @ts-ignore
 @NgModule({
   declarations: [],
   imports: modules,
