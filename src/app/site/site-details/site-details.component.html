@@ -6,7 +6,11 @@
   </mat-form-field>
   <mat-form-field>
     <mat-label>Numéro de téléphone</mat-label>
-    <input matInput type="number" [(ngModel)]="data.tel">
+    <input matInput type="tel" [(ngModel)]="data.phone">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <input matInput type="text" [(ngModel)]="data.description">
   </mat-form-field>
 </div>
 <div mat-dialog-actions>

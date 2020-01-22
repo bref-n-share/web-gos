@@ -3,6 +3,7 @@ import {Demand} from '../../models/Demand';
 import {Router} from '@angular/router';
 import {SocialService} from '../../services/social.service';
 import {MatSnackBar} from '@angular/material';
+import {NotifyService} from '../../services/notify.service';
 
 @Component({
   selector: 'app-demand',
@@ -14,13 +15,15 @@ export class DemandComponent implements OnInit {
   constructor(
     private router: Router,
     private socialService: SocialService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private notifyService: NotifyService
   ) { }
 
   buttonsLoading = {
     twitter: false,
     facebook: false,
     gos: false,
+    mobile: false,
   };
 
   @Input() demand: Demand;
@@ -43,7 +46,22 @@ export class DemandComponent implements OnInit {
     this.socialService.publish(channel, this.demand.id).subscribe(result => {
       console.log('result', result);
       this.buttonsLoading[channel] = false;
-      this.snackBar.open('Publié');
+      this.snackBar.open('Publié', null, {
+        duration: 2000,
+      });
+    });
+  }
+
+  notify() {
+    this.buttonsLoading.mobile = true;
+    this.notifyService.notify({}, this.demand.id).subscribe(value => {
+      console.log('value returned', value);
+      this.snackBar.open('Demande notifié. La notification restera 3 jours', null, {duration: 2000});
+      this.buttonsLoading.mobile = false;
+    }, error => {
+      console.error('error', error);
+      this.snackBar.open('Erreur lors de l\'envoi : ' + error.statusText, null, {duration: 2000});
+      this.buttonsLoading.mobile = false;
     });
   }
 

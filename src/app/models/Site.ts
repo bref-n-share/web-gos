@@ -12,4 +12,5 @@ export interface Site {
   status: string;
   phone: string;
   organization: Organization;
+  description: string;
 }

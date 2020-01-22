@@ -110,6 +110,7 @@ export class SignupComponent implements OnInit {
     toSend.structure = {
       name: assocObject.name,
       address: assocObject.address,
+      description: assocObject.description,
       postalCode: '',
       city: '',
       type: ''

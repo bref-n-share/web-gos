@@ -18,4 +18,8 @@ export class PostService {
   getPosts() {
     return this.http.get(`${environment.apiUrl}/post?level=full&channels=gos`).pipe(map((posts: Demand[]) => this.demandsService.allDemands = posts));
   }
+
+  setComment(id: string, description: string) {
+    return this.http.post(`${environment.apiUrl}/post/${id}/comment`, {description: description});
+  }
 }
