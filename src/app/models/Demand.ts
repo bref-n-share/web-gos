@@ -1,5 +1,6 @@
 import {Category} from './Category';
 import {Site} from './Site';
+import {Comment} from './Comment';
 
 export interface Demand {
   id: string;

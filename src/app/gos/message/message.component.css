@@ -5,3 +5,7 @@ img {
 .mat-card .mat-divider-horizontal {
   position: relative;
 }
+
+.comment {
+  margin-top: 2%;
+}

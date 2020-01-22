@@ -1,5 +1,7 @@
+import {User} from './User';
+
 export interface Comment {
-  author: string;
-  img: string;
-  message: string;
+  post: string;
+  member: User;
+  description: string;
 }
