@@ -32,7 +32,6 @@ export class MapsService {
       this.geocoder.geocode({
         address
       }, (results, status) => {
-        console.log(results);
         if (status === google.maps.GeocoderStatus.OK) {
           // decompose the result
           resolve({

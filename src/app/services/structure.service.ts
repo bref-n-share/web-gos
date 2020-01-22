@@ -16,4 +16,13 @@ export class StructureService {
   getStructures(): Observable<Structure[]> {
     return this.http.get<Structure[]>(`${environment.apiUrl}/structure`);
   }
+
+  getSite(id: string) {
+    return this.http.get(`${environment.apiUrl}/structure/site/${id}`);
+  }
+
+  updateSite(id: string, body: object) {
+    return this.http.patch(`${environment.apiUrl}/structure/site/${id}`, body);
+
+  }
 }
