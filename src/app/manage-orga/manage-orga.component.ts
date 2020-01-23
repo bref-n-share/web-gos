@@ -3,6 +3,7 @@ import {UserService} from '../services/user.service';
 import {StructureService} from '../services/structure.service';
 import {Site} from '../models/Site';
 import {Organization} from '../models/organization';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-manage-orga',
@@ -13,7 +14,8 @@ export class ManageOrgaComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private structureService: StructureService
+    private structureService: StructureService,
+    private router: Router,
   ) { }
 
   organization: Organization = null;
@@ -27,6 +29,7 @@ export class ManageOrgaComponent implements OnInit {
       });
     } else {
       alert('Vous n\'êtes pas authorisé à accéder à cette page.');
+      this.router.navigate(['']);
     }
   }
 
