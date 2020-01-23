@@ -1,0 +1,15 @@
+<mat-expansion-panel (afterExpand)="itemSelected(site)" (afterCollapse)="itemSelected(null)">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      {{site.name}}
+    </mat-panel-title>
+    <mat-panel-description>
+      {{site.description}}
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <div>
+    <span>
+      Adresse: {{site.address}}
+    </span>
+  </div>
+</mat-expansion-panel>
