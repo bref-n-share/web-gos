@@ -18,7 +18,7 @@ export class MyDemandsComponent implements OnInit {
     this.demandsService.demandsBS.subscribe((demands) => {
       this.demands = demands;
     });
-    this.demandsService.getRequests().subscribe((demands: Array<Demand>) => {
+    this.demandsService.getMyRequests().subscribe((demands: Array<Demand>) => {
       this.demandsService.demandsBS.next(demands);
       this.loading = false;
     });
