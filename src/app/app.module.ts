@@ -42,6 +42,10 @@ import { TwitterComponent } from './notify/twitter/twitter.component';
 import { MobileComponent } from './notify/mobile/mobile.component';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material';
 import {MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_FORMATS, MomentDateAdapter} from '@angular/material-moment-adapter';
+import { ManageOrgaComponent } from './manage-orga/manage-orga.component';
+import { SitesComponent } from './manage-orga/sites/sites.component';
+import { ManageSiteComponent } from './manage-orga/sites/manage-site/manage-site.component';
+import { ManageOrgaDetailsComponent } from './manage-orga/manage-orga-details/manage-orga-details.component';
 
 
 @NgModule({
@@ -76,6 +80,10 @@ import {MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_FORMATS, MomentDateAdap
     SearchBarComponent,
     TwitterComponent,
     MobileComponent,
+    ManageOrgaComponent,
+    SitesComponent,
+    ManageSiteComponent,
+    ManageOrgaDetailsComponent,
   ],
   imports: [
     FlexLayoutModule,

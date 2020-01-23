@@ -11,6 +11,7 @@ import {UserComponent} from './user/user.component';
 import {MyDemandsComponent} from './my-demands/my-demands.component';
 import { AccountAlreadyCreatedComponent } from './signup/account-already-created/account-already-created.component';
 import {DemandFormComponent} from './demand-form/demand-form.component';
+import {ManageOrgaComponent} from './manage-orga/manage-orga.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'account-already-created', component: AccountAlreadyCreatedComponent },
   { path: 'demand-form', component: DemandFormComponent, canActivate: [AuthGuard] },
   { path: 'demand-form/:requestId', component: DemandFormComponent, canActivate: [AuthGuard] },
+  { path: 'manage-orga', component: ManageOrgaComponent, canActivate: [AuthGuard] },
   // otherwise redirect to home
   { path: '**', redirectTo: '' }
 ];

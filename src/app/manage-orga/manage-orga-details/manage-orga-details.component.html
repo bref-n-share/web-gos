@@ -1,0 +1,17 @@
+<form [formGroup]="formOrga" fxLayout="column" fxLayoutAlign="space-evenly center">
+  <mat-form-field>
+    <mat-label>Nom</mat-label>
+    <input matInput formControlName="name">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Adresse</mat-label>
+    <input matInput formControlName="address">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Numéro de téléphone</mat-label>
+    <input matInput formControlName="phone">
+  </mat-form-field>
+  <mat-form-field>
+    <textarea matInput formControlName="description"></textarea>
+  </mat-form-field>
+</form>

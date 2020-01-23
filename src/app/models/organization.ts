@@ -1,3 +1,5 @@
+import {Site} from './Site';
+
 export interface Organization {
   id: string;
   name: string;
@@ -6,4 +8,6 @@ export interface Organization {
   city: string;
   status: string;
   phone: string;
+  sites?: Site[];
+  description?: string;
 }

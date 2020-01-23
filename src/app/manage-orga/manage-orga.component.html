@@ -1,0 +1,10 @@
+<main>
+  <mat-tab-group backgroundColor="primary">
+    <mat-tab label="Organisation">
+      <app-manage-orga-details *ngIf="organization" [organization]="organization"></app-manage-orga-details>
+    </mat-tab>
+    <mat-tab label="Sites">
+      <app-sites [sites]="sites"></app-sites>
+    </mat-tab>
+  </mat-tab-group>
+</main>

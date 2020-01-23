@@ -1,0 +1,15 @@
+<div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center center" class="main-container">
+  <agm-map [latitude]="mapInfo.latitude"
+           [longitude]="mapInfo.longitude"
+           [zoom]="mapInfo.zoom" fxFlex="50">
+    <agm-marker *ngIf="selectedSite"
+                [latitude]="coordToFloat(selectedSite.latitude)"
+                [longitude]="coordToFloat(selectedSite.longitude)"></agm-marker>
+  </agm-map>
+
+
+  <mat-accordion fxFlex="50">
+    <app-manage-site *ngFor="let site of sites"
+                     [site]="site" (siteSelected)="updateSelectedSite($event)"></app-manage-site>
+  </mat-accordion>
+</div>
