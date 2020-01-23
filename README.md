@@ -3,8 +3,8 @@
 ## Sommaire
 * [Architecture](#architecture)
 * [Installer le projet](#installer-le-projet)
-  * [Prérequis](#prrequis)
-  * [Récupérer les sources](#rcuprer-les-sources)
+  * [Prérequis](#prérequis)
+  * [Récupérer les sources](#récupérer-les-sources)
   * [Installer les sources](#installer)
   * [Lancer le projet](#lancer)
 
