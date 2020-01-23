@@ -17,7 +17,7 @@ export class NotifyService {
   }
 
   publish(channel, message) {
-    return this.http.post(`${environment.apiUrl}/notification/publish`, {channels: [channel], message});
+    return this.http.post(`${environment.apiUrl}/publication/publish`, {channels: [channel], message});
   }
 
   createPost(channel, message) {
