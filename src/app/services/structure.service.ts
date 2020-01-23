@@ -23,6 +23,9 @@ export class StructureService {
 
   updateSite(id: string, body: object) {
     return this.http.patch(`${environment.apiUrl}/structure/site/${id}`, body);
+  }
 
+  getFullStructure(id: string) {
+    return this.http.get(`${environment.apiUrl}/structure/organization/${id}?level=full`);
   }
 }
